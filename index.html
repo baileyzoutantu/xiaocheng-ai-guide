@@ -22,30 +22,29 @@
   --shadow: 0 2px 12px rgba(44,62,45,0.08);
   --shadow-hover: 0 4px 20px rgba(44,62,45,0.14);
 }
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
-  font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
   background: var(--bg); color: var(--ink); line-height: 1.7; min-height: 100vh;
 }
+.container { max-width: 860px; margin: 0 auto; padding: 0 1.2rem; }
 
 /* ===== 导航栏 ===== */
 .nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: rgba(250,247,240,0.95); backdrop-filter: blur(10px);
+  background: rgba(250,247,240,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--rule); padding: 0 1.2rem;
 }
 .nav-inner {
-  max-width: 720px; margin: 0 auto;
-  display: flex; align-items: center; justify-content: space-between;
-  height: 56px;
+  max-width: 860px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; height: 48px;
 }
-.nav-brand { font-weight: 700; font-size: 1rem; color: var(--accent); }
+.nav-brand { font-weight: 700; font-size: 0.9rem; color: var(--accent); }
 .nav-links { display: flex; gap: 0.15rem; }
 .nav-links a {
   font-size: 0.8rem; color: var(--muted); text-decoration: none;
-  padding: 0.3rem 0.5rem; border-radius: 6px; transition: all 0.2s;
+  padding: 0.25rem 0.5rem; border-radius: 6px; transition: all 0.2s;
 }
 .nav-links a:hover, .nav-links a.active { color: var(--accent); background: var(--accent-light); }
 .nav-toggle {
@@ -60,260 +59,346 @@ body {
 .nav-toggle span::before { content: ''; top: -6px; }
 .nav-toggle span::after { content: ''; top: 6px; }
 
-/* ===== 容器 ===== */
-.container { max-width: 720px; margin: 0 auto; padding: 0 1.2rem; }
-
-/* ===== 区块 ===== */
-section { padding: 3.5rem 0; }
-.section-title { font-size: 1.35rem; font-weight: 700; margin-bottom: 0.4rem; }
-.section-desc { font-size: 0.92rem; color: var(--muted); margin-bottom: 1.5rem; max-width: 560px; }
-.section-divider { width: 32px; height: 3px; border-radius: 2px; background: var(--accent); margin-bottom: 1.2rem; }
-
-/* ===== 首页 ===== */
-.hero { padding-top: 90px; padding-bottom: 2.5rem; text-align: center; }
-.hero h1 { font-size: 1.9rem; font-weight: 800; line-height: 1.3; margin-bottom: 0.8rem; }
-.hero h1 .accent { color: var(--accent); }
-.hero p { font-size: 1rem; color: var(--muted); max-width: 480px; margin: 0 auto 1.5rem; }
-.hero-actions { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; }
+/* ===== 通用区块 ===== */
+section { padding: 2.5rem 0; scroll-margin-top: 96px; }
+.section-title { font-size: 1.25rem; font-weight: 800; margin-bottom: 0.3rem; }
+.section-desc { font-size: 0.9rem; color: var(--muted); margin-bottom: 1.2rem; }
 
 /* ===== 按钮 ===== */
 .btn {
-  display: inline-flex; align-items: center; gap: 0.35rem;
-  padding: 0.65rem 1.3rem; border-radius: 8px;
-  font-size: 0.88rem; font-weight: 600; cursor: pointer;
-  text-decoration: none; border: none; transition: all 0.25s;
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  padding: 0.55rem 1.1rem; border-radius: 8px;
+  font-size: 0.85rem; font-weight: 600; cursor: pointer;
+  text-decoration: none; border: none; transition: all 0.2s;
 }
 .btn-primary { background: var(--accent); color: #fff; }
-.btn-primary:hover { background: #2E6345; transform: translateY(-1px); box-shadow: var(--shadow-hover); }
+.btn-primary:hover { background: #2E6345; }
 .btn-outline { background: transparent; color: var(--accent); border: 1.5px solid var(--accent); }
 .btn-outline:hover { background: var(--accent-light); }
 .btn-ghost { background: var(--bg2); color: var(--ink); border: 1px solid var(--rule); }
 .btn-ghost:hover { background: var(--rule); }
-.btn-sm { padding: 0.45rem 1rem; font-size: 0.82rem; }
+.btn-sm { padding: 0.4rem 0.85rem; font-size: 0.8rem; }
 
-/* ===== 痛点引导卡片 ===== */
-.pain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-.pain-card {
-  background: #fff; border-radius: var(--radius); padding: 1.5rem;
-  border: 1.5px solid var(--rule); transition: all 0.25s; cursor: pointer;
-  display: flex; flex-direction: column;
-}
-.pain-card:hover { border-color: var(--accent); box-shadow: var(--shadow-hover); transform: translateY(-3px); }
-.pain-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
-.pain-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; margin-bottom: 1rem; flex: 1; }
-.pain-card .btn { width: 100%; justify-content: center; }
+/* ===== Hero ===== */
+.hero { padding-top: 110px; padding-bottom: 1.5rem; text-align: center; }
+.hero h1 { font-size: 1.7rem; font-weight: 800; line-height: 1.6; margin: 0 0 1rem; letter-spacing: 0.01em; }
+.hero-desc { max-width: 680px; margin: 1rem auto 0.6rem; font-size: 1.25rem; line-height: 1.7; font-weight: 700; color: var(--ink); text-align: center; }
+.hero-vision { max-width: 620px; margin: 0 auto 2rem; font-size: 1rem; line-height: 1.8; color: var(--muted); text-align: center; }
+.hero-actions { display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
 
-/* ===== 交付物卡片 ===== */
-.deliver-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; }
-.deliver-card {
-  background: #fff; border-radius: var(--radius); padding: 1.2rem;
-  border: 1.5px solid var(--rule); transition: all 0.25s;
-}
-.deliver-card:hover { border-color: var(--accent); box-shadow: var(--shadow); transform: translateY(-2px); }
-.deliver-card h4 { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.3rem; }
-.deliver-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; margin-bottom: 0.6rem; }
-.deliver-prompt {
-  background: var(--bg2); border-radius: 6px; padding: 0.6rem 0.8rem;
-  font-size: 0.78rem; color: var(--ink); line-height: 1.6; margin-bottom: 0.6rem;
-  border-left: 3px solid var(--accent);
-}
-.deliver-actions { display: flex; gap: 0.4rem; }
-
-/* ===== 身份选择 ===== */
+/* ===== 身份卡片网格 ===== */
 .identity-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem;
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 0.6rem; max-width: 860px; margin: 0 auto;
 }
-.identity-card {
-  background: #fff; border-radius: var(--radius);
-  padding: 1.2rem 0.8rem; border: 2px solid var(--rule);
-  cursor: pointer; text-align: center; transition: all 0.25s;
-  position: relative;
+.id-card {
+  background: #fff; border: 1.5px solid var(--rule); border-radius: var(--radius);
+  padding: 0.9rem 0.7rem; text-align: center; cursor: pointer;
+  transition: all 0.25s; position: relative;
+  width: 155px; flex: 0 0 auto;
 }
-.identity-card:hover { border-color: var(--accent); background: var(--accent-light); transform: translateY(-2px); box-shadow: var(--shadow); }
-.identity-card.selected {
-  border-color: var(--accent); background: var(--accent-light);
-  box-shadow: 0 0 0 3px rgba(59,122,87,0.15), var(--shadow-hover);
-  transform: translateY(-3px) scale(1.02);
-}
-.identity-card.selected::after {
+.id-card:hover { border-color: var(--accent); box-shadow: var(--shadow); transform: translateY(-2px); }
+.id-card.selected { border-color: var(--accent); border-width: 2px; background: var(--accent-light); }
+.id-card.selected::after {
   content: '✓'; position: absolute; top: 6px; right: 8px;
-  font-size: 0.75rem; font-weight: 700; color: #fff; background: var(--accent);
-  width: 22px; height: 22px; border-radius: 50%;
+  font-size: 0.75rem; font-weight: 700; color: var(--accent);
+  background: var(--accent-light); border-radius: 50%; width: 18px; height: 18px;
   display: flex; align-items: center; justify-content: center;
-  animation: popIn 0.25s ease;
 }
-@keyframes popIn { from { transform: scale(0); } to { transform: scale(1); } }
-.identity-emoji { font-size: 1.8rem; margin-bottom: 0.3rem; }
-.identity-card h4 { font-size: 0.88rem; font-weight: 700; }
-.identity-card p { font-size: 0.75rem; color: var(--muted); }
+.id-card-emoji { font-size: 1.6rem; display: block; margin-bottom: 0.3rem; }
+.id-card-name { font-size: 0.82rem; font-weight: 700; display: block; margin-bottom: 0.15rem; }
+.id-card-desc { font-size: 0.68rem; color: var(--muted); line-height: 1.4; display: block; }
 
-/* ===== 任务详情 ===== */
+/* ===== 任务面板 ===== */
 .task-panel {
-  margin-top: 1.5rem; background: #fff; border-radius: var(--radius);
-  padding: 1.8rem; border: 1.5px solid var(--accent);
-  display: none; scroll-margin-top: 72px;
+  max-width: 700px; margin: 1rem auto 0; background: #fff;
+  border-radius: var(--radius); border: 1px solid var(--rule);
+  overflow: hidden; scroll-margin-top: 72px;
+  max-height: 0; opacity: 0; padding: 0 1.2rem;
+  transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
 }
-.task-panel.visible { display: block; animation: fadeSlideUp 0.4s ease; }
-@keyframes fadeSlideUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-.task-panel-header { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem; }
-.task-panel-header .icon { font-size: 1.5rem; }
-.task-panel-header h3 { font-size: 1.05rem; font-weight: 700; }
-.task-step { display: flex; gap: 0.8rem; margin-bottom: 1rem; align-items: flex-start; }
-.task-step-num {
-  flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
-  background: var(--accent); color: #fff; font-size: 0.8rem; font-weight: 700;
-  display: flex; align-items: center; justify-content: center;
+.task-panel.open { max-height: 600px; opacity: 1; padding: 1.2rem; }
+.task-panel-header { font-size: 1rem; font-weight: 700; margin-bottom: 0.8rem; }
+.task-prompt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+.task-prompt-card {
+  background: var(--bg); border: 1.5px solid var(--rule); border-radius: 10px;
+  padding: 0.8rem; transition: all 0.2s;
 }
-.task-step h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.2rem; }
-.task-step p { font-size: 0.85rem; color: var(--muted); }
-.task-actions { margin-top: 1.2rem; display: flex; gap: 0.7rem; flex-wrap: wrap; }
+.task-prompt-card:hover { border-color: var(--accent); background: var(--accent-light); }
+.task-prompt-label { font-size: 0.82rem; font-weight: 700; margin-bottom: 0.15rem; }
+.task-prompt-desc { font-size: 0.75rem; color: var(--muted); margin-bottom: 0.5rem; }
+.task-prompt-btn {
+  font-size: 0.75rem; font-weight: 600; color: var(--accent);
+  background: var(--accent-light); border: none; padding: 0.3rem 0.7rem;
+  border-radius: 6px; cursor: pointer; transition: all 0.2s;
+}
+.task-prompt-btn:hover { background: var(--accent); color: #fff; }
 
-/* ===== 提示词生成器 ===== */
-.generator-wrap {
-  background: #fff; border-radius: var(--radius); border: 1px solid var(--rule); overflow: hidden;
+/* ===== 生成器通用 ===== */
+.gen-box {
+  background: #fff; border-radius: var(--radius); border: 1px solid var(--rule);
+  padding: 1.5rem; max-width: 640px; margin: 0 auto;
 }
-.generator-form { padding: 1.5rem; }
-.form-group { margin-bottom: 1rem; }
-.form-group label {
-  display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.3rem;
-}
-.form-group label span { font-weight: 400; color: var(--muted); font-size: 0.78rem; }
-.form-input, .form-textarea {
-  width: 100%; padding: 0.65rem 0.9rem; border: 1.5px solid var(--rule);
+.gen-form { display: flex; flex-direction: column; gap: 0.8rem; }
+.gen-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+.gen-input, .gen-textarea {
+  width: 100%; padding: 0.6rem 0.85rem; border: 1.5px solid var(--rule);
   border-radius: 8px; font-size: 0.88rem; font-family: inherit; color: var(--ink);
   background: var(--bg); transition: border-color 0.2s;
 }
-.form-input:focus, .form-textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(59,122,87,0.1); }
-.form-input::placeholder, .form-textarea::placeholder { color: #B5B0A5; }
-.form-textarea { min-height: 60px; resize: vertical; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
-.generator-result {
-  border-top: 2px solid var(--accent); background: var(--accent-light);
-  padding: 1.2rem 1.5rem; display: none;
+.gen-input:focus, .gen-textarea:focus {
+  outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(59,122,87,0.1);
 }
-.generator-result.visible { display: block; animation: fadeSlideUp 0.35s ease; }
-.generator-result h4 { font-size: 0.9rem; font-weight: 700; color: var(--accent); margin-bottom: 0.6rem; }
-.result-text {
-  background: #fff; border-radius: 8px; padding: 1rem 1.2rem;
-  font-size: 0.88rem; line-height: 1.75; color: var(--ink);
-  white-space: pre-wrap; word-break: break-all; border: 1px solid var(--rule);
+.gen-input::placeholder, .gen-textarea::placeholder { color: #B5B0A5; }
+.gen-textarea { min-height: 52px; resize: vertical; }
+.gen-label { font-size: 0.82rem; font-weight: 700; margin-bottom: 0.25rem; display: block; }
+.gen-label span { font-weight: 400; color: var(--muted); font-size: 0.75rem; }
+
+/* ===== 生成器结果 ===== */
+.gen-result {
+  margin-top: 1rem; border-top: 2px solid var(--accent); background: var(--accent-light);
+  padding: 1rem 1.2rem; display: none; border-radius: 0 0 var(--radius) var(--radius);
 }
-.result-actions { display: flex; gap: 0.6rem; margin-top: 0.8rem; }
-.result-tip {
-  margin-top: 0.8rem; padding: 0.7rem 1rem; background: #fff;
+.gen-result.visible { display: block; animation: fadeUp 0.35s ease; }
+.gen-edit-hint { font-size: 0.8rem; color: var(--accent); font-weight: 600; margin-bottom: 0.3rem; }
+.gen-result textarea {
+  width: 100%; background: #fff; border-radius: 8px; padding: 0.8rem 1rem;
+  font-size: 0.85rem; line-height: 1.7; color: var(--ink); border: 1px solid var(--rule);
+  font-family: inherit; resize: vertical;
+}
+.gen-actions { display: flex; gap: 0.5rem; margin-top: 0.6rem; flex-wrap: wrap; }
+.gen-tip {
+  margin-top: 0.6rem; padding: 0.6rem 0.9rem; background: #fff;
+  border-radius: 8px; border: 1px solid var(--rule); font-size: 0.8rem; color: var(--muted);
+}
+
+/* ===== 快速模板 ===== */
+.quick-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem;
+  max-width: 640px; margin: 0 auto 1.5rem;
+}
+.quick-card {
+  background: #fff; border-radius: 10px; padding: 0.8rem;
+  border: 1.5px solid var(--rule); cursor: pointer; text-align: left;
+  transition: all 0.2s;
+}
+.quick-card:hover { border-color: var(--accent); background: var(--accent-light); transform: translateY(-2px); }
+.quick-card h4 { font-size: 0.82rem; font-weight: 700; margin-bottom: 0.2rem; }
+.quick-card p { font-size: 0.75rem; color: var(--muted); line-height: 1.5; }
+
+/* ===== 一句话生成器 ===== */
+.quickgen-box {
+  max-width: 640px; margin: 0 auto;
+}
+.quickgen-textarea {
+  width: 100%; padding: 0.8rem 1rem; border: 1.5px solid var(--rule);
+  border-radius: var(--radius); font-size: 0.9rem; font-family: inherit;
+  color: var(--ink); background: #fff; min-height: 70px; resize: vertical;
+  transition: border-color 0.2s;
+}
+.quickgen-textarea:focus {
+  outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(59,122,87,0.1);
+}
+.quickgen-textarea::placeholder { color: #B5B0A5; }
+
+/* ===== AI 工具推荐 ===== */
+.tools-section { background: var(--bg2); }
+.scene-pills {
+  display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.2rem; justify-content: center;
+}
+.scene-pill {
+  font-size: 0.8rem; font-weight: 600; padding: 0.4rem 1rem;
+  border-radius: 20px; border: 1.5px solid var(--rule); background: #fff;
+  color: var(--muted); cursor: pointer; transition: all 0.2s; white-space: nowrap;
+}
+.scene-pill:hover { border-color: var(--accent); color: var(--accent); }
+.scene-pill.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+.scene-panel { display: none; animation: fadeUp 0.3s ease; }
+.scene-panel.active { display: block; }
+.scene-panel-desc { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.8rem; }
+.scene-tools { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.6rem; }
+.scene-tool-tag {
+  font-size: 0.82rem; font-weight: 600; padding: 0.4rem 0.9rem;
+  border-radius: 8px; background: #fff; color: var(--ink);
+  border: 1.5px solid var(--rule); transition: all 0.2s;
+}
+.scene-tool-tag.recommended { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+.tools-install-tip {
+  margin-top: 1rem; padding: 0.6rem 1rem; background: #fff;
   border-radius: 8px; border: 1px solid var(--rule);
-  font-size: 0.82rem; color: var(--muted); line-height: 1.6;
+  font-size: 0.82rem; color: var(--muted); text-align: center;
 }
 
 /* ===== 7 天计划 ===== */
-.plan-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.2rem; flex-wrap: wrap; gap: 0.6rem; }
+.plan-section { background: var(--bg2); }
+.plan-guide { font-size: 0.85rem; color: var(--accent); line-height: 1.7; margin-bottom: 1.2rem; max-width: 560px; }
+.plan-header { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem; flex-wrap: wrap; }
 .plan-cycle {
-  font-size: 0.82rem; font-weight: 700; color: var(--accent);
-  background: var(--accent-light); padding: 0.3rem 0.8rem; border-radius: 20px;
+  font-size: 0.8rem; font-weight: 700; color: var(--accent);
+  background: var(--accent-light); padding: 0.25rem 0.7rem; border-radius: 20px;
 }
-.progress-wrap { background: var(--bg2); border-radius: 20px; height: 10px; flex: 1; max-width: 300px; overflow: hidden; }
-.progress-fill { height: 100%; background: var(--accent); border-radius: 20px; transition: width 0.5s ease; }
-.plan-list { display: flex; flex-direction: column; gap: 0.6rem; }
+.plan-progress { background: var(--rule); border-radius: 20px; height: 8px; flex: 1; max-width: 200px; overflow: hidden; }
+.plan-fill { height: 100%; background: var(--accent); border-radius: 20px; transition: width 0.5s; }
+.plan-count { font-size: 0.8rem; font-weight: 700; color: var(--accent); }
+.plan-list { display: flex; flex-direction: column; gap: 0.5rem; }
 .plan-day {
-  display: flex; align-items: center; gap: 0.8rem;
-  background: #fff; border-radius: var(--radius); padding: 1rem 1.2rem;
-  border: 1.5px solid var(--rule); cursor: pointer; transition: all 0.25s;
+  display: flex; align-items: center; gap: 0.7rem;
+  background: #fff; border-radius: 10px; padding: 0.8rem 1rem;
+  border: 1.5px solid var(--rule); cursor: pointer; transition: all 0.2s;
 }
-.plan-day:hover { border-color: var(--accent); box-shadow: var(--shadow); }
+.plan-day:hover { border-color: var(--accent); }
 .plan-day.done { border-color: var(--accent); background: var(--accent-light); }
 .plan-check {
-  flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%;
-  border: 2.5px solid var(--rule); display: flex; align-items: center; justify-content: center;
-  transition: all 0.3s; font-size: 0.8rem;
+  flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
+  border: 2px solid var(--rule); display: flex; align-items: center; justify-content: center;
+  font-size: 0.75rem; transition: all 0.3s;
 }
 .plan-day.done .plan-check { border-color: var(--accent); background: var(--accent); color: #fff; }
 .plan-day-content { flex: 1; }
-.plan-day-content h4 { font-size: 0.9rem; font-weight: 700; }
-.plan-day.done h4 { text-decoration: line-through; color: var(--muted); }
-.plan-day-content p { font-size: 0.82rem; color: var(--muted); }
-.plan-tag { flex-shrink: 0; font-size: 0.7rem; font-weight: 600; padding: 0.15rem 0.6rem; border-radius: 20px; background: var(--bg2); color: var(--muted); }
+.plan-day-content h4 { font-size: 0.85rem; font-weight: 700; }
+.plan-day.done .plan-day-content h4 { text-decoration: line-through; color: var(--muted); }
+.plan-day-content p { font-size: 0.75rem; color: var(--muted); }
+.plan-tag {
+  font-size: 0.68rem; font-weight: 600; padding: 0.1rem 0.5rem;
+  border-radius: 20px; background: var(--bg2); color: var(--muted);
+}
 .plan-day.done .plan-tag { background: var(--accent-light); color: var(--accent); }
-.plan-complete { display: none; text-align: center; padding: 1.5rem; background: var(--accent2-light); border-radius: var(--radius); margin-top: 1rem; }
-.plan-complete.visible { display: block; animation: fadeSlideUp 0.4s ease; }
-.plan-complete h4 { font-size: 1.05rem; color: var(--accent2); }
-.plan-complete p { font-size: 0.85rem; color: var(--muted); margin-top: 0.3rem; }
-
-/* ===== AI 工具推荐 · 场景选择器 ===== */
-.scene-tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.2rem; }
-.scene-tab {
-  padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer;
-  font-size: 0.85rem; font-weight: 600; border: 1.5px solid var(--rule);
-  background: #fff; color: var(--muted); transition: all 0.25s;
+.plan-complete {
+  display: none; text-align: center; padding: 1.2rem;
+  background: var(--accent2-light); border-radius: var(--radius); margin-top: 0.8rem;
 }
-.scene-tab:hover { border-color: var(--accent); color: var(--accent); }
-.scene-tab.active { background: var(--accent); color: #fff; border-color: var(--accent); }
-.scene-panel { display: none; animation: fadeSlideUp 0.35s ease; }
-.scene-panel.active { display: block; }
-.scene-tools { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.8rem; }
-.scene-tool-tag {
-  font-size: 0.85rem; font-weight: 600; padding: 0.35rem 0.9rem;
-  background: var(--accent-light); color: var(--accent); border-radius: 8px;
-  border: 1px solid rgba(59,122,87,0.2);
-}
-.scene-desc-text { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
-.scene-note {
-  margin-top: 0.6rem; padding: 0.7rem 1rem; background: var(--accent2-light);
-  border-radius: 8px; font-size: 0.82rem; color: #7A6A20;
-}
-
-/* ===== 任务详情 · 多提示词卡片 ===== */
-.task-prompts { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.5rem; }
-.task-prompt-card {
-  background: var(--bg); border-radius: 8px; padding: 0.9rem 1rem;
-  border: 1px solid var(--rule); transition: all 0.2s;
-}
-.task-prompt-card:hover { border-color: var(--accent); background: var(--accent-light); }
-.task-prompt-card h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 0.3rem; }
-.task-prompt-card p { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.5rem; line-height: 1.6; }
-.task-prompt-card .btn { width: 100%; justify-content: center; }
+.plan-complete.visible { display: block; animation: fadeUp 0.4s ease; }
+.plan-complete h4 { font-size: 1rem; color: var(--accent2); }
+.plan-complete p { font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; }
+.plan-reset { text-align: center; margin-top: 0.8rem; }
 
 /* ===== 安全提醒 ===== */
-.safety-list { display: flex; flex-direction: column; gap: 0.8rem; }
-.safety-item {
-  display: flex; gap: 0.8rem; background: #fff;
-  border-radius: var(--radius); padding: 1.2rem;
-  border-left: 4px solid var(--danger);
+.safety-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; }
+.safety-card {
+  background: #fff; border-radius: 10px; padding: 0.9rem;
+  border-left: 3px solid var(--danger);
 }
-.safety-item:nth-child(2) { border-left-color: var(--accent2); }
-.safety-item:nth-child(3) { border-left-color: var(--accent); }
-.safety-icon { font-size: 1.3rem; flex-shrink: 0; }
-.safety-item h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.15rem; }
-.safety-item p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+.safety-card:nth-child(2) { border-left-color: var(--accent2); }
+.safety-card:nth-child(3) { border-left-color: var(--accent); }
+.safety-card h4 { font-weight: 700; margin-bottom: 0.15rem; font-size: 0.82rem; }
+.safety-card p { color: var(--muted); line-height: 1.5; font-size: 0.75rem; }
+
+/* ===== VR 服务站 ===== */
+.station-intro { font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; text-align: center; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.8; }
+.station-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;
+  max-width: 700px; margin: 0 auto;
+}
+.station-card {
+  background: #fff; border-radius: var(--radius); padding: 1rem;
+  border: 1.5px solid var(--rule); transition: all 0.2s;
+}
+.station-card:hover { border-color: var(--accent); box-shadow: var(--shadow); }
+.station-emoji { font-size: 1.6rem; display: block; margin-bottom: 0.3rem; }
+.station-name { font-size: 0.9rem; font-weight: 700; display: block; margin-bottom: 0.15rem; }
+.station-audience { font-size: 0.75rem; font-weight: 600; color: var(--accent); display: inline-block; background: var(--accent-light); padding: 0.1rem 0.5rem; border-radius: 12px; margin-bottom: 0.3rem; }
+.station-desc { font-size: 0.75rem; color: var(--muted); line-height: 1.5; margin-bottom: 0.6rem; }
+.station-detail-btn {
+  font-size: 0.75rem; font-weight: 600; color: var(--accent);
+  background: var(--accent-light); border: none; padding: 0.35rem 0.8rem;
+  border-radius: 6px; cursor: pointer; transition: all 0.2s;
+}
+.station-detail-btn:hover { background: var(--accent); color: #fff; }
+
+/* ===== VR 预览面板 ===== */
+.station-preview {
+  max-width: 700px; margin: 0.3rem auto 0; border-radius: var(--radius);
+  overflow: hidden; max-height: 0; opacity: 0;
+  transition: max-height 0.5s ease, opacity 0.3s ease, padding 0.3s ease;
+  padding: 0 1.5rem;
+  background: linear-gradient(135deg, #1a2a1f, #2d4a35, #1a2a1f);
+  color: #d4e8d8;
+  scroll-margin-top: 72px;
+}
+.station-preview.open { max-height: 800px; opacity: 1; padding: 1.5rem; }
+.station-preview-title { font-size: 1rem; font-weight: 700; margin-bottom: 1rem; color: #fff; }
+
+/* 3D 步骤卡片 */
+.station-steps {
+  display: flex; justify-content: center; align-items: center; gap: 1rem;
+  perspective: 800px; margin-bottom: 1rem;
+}
+.station-step-card {
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px; padding: 1rem 1.2rem; text-align: center;
+  min-width: 150px; max-width: 180px; flex-shrink: 0;
+  transition: all 0.3s;
+}
+.station-step-card:nth-child(1) { transform: rotateY(-8deg) translateZ(10px); }
+.station-step-card:nth-child(2) { transform: translateZ(30px); border-color: rgba(59,122,87,0.5); background: rgba(59,122,87,0.15); }
+.station-step-card:nth-child(3) { transform: rotateY(8deg) translateZ(10px); }
+.station-step-emoji { font-size: 1.4rem; display: block; margin-bottom: 0.3rem; }
+.station-step-name { font-size: 0.82rem; font-weight: 700; color: #fff; }
+.station-step-desc { font-size: 0.75rem; color: rgba(255,255,255,0.7); margin-top: 0.15rem; }
+.station-preview .btn-ghost {
+  background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); color: #d4e8d8;
+}
+.station-preview .btn-ghost:hover { background: rgba(255,255,255,0.2); }
+
+/* ===== "开发中"提示条 ===== */
+.coming-soon-note {
+  margin: 0.5rem auto 0; max-width: 560px; padding: 0.75rem 1rem;
+  border-radius: 999px; background: var(--accent-light); color: var(--accent);
+  font-size: 0.88rem; text-align: center; font-weight: 600;
+}
 
 /* ===== 页脚 ===== */
-.footer { text-align: center; padding: 2rem 1.2rem; border-top: 1px solid var(--rule); color: var(--muted); font-size: 0.8rem; }
-.footer p { margin-bottom: 0.3rem; }
-.footer .privacy { font-size: 0.75rem; opacity: 0.7; }
+.footer {
+  text-align: center; padding: 1.5rem 1.2rem;
+  border-top: 1px solid var(--rule); color: var(--muted); font-size: 0.8rem;
+}
+.footer p { margin-bottom: 0.2rem; }
+.footer .vr-note { font-size: 0.75rem; opacity: 0.7; margin-top: 0.3rem; }
 
 /* ===== Toast ===== */
 .toast {
-  position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%) translateY(80px);
-  background: var(--ink); color: #fff; padding: 0.6rem 1.2rem;
-  border-radius: 8px; font-size: 0.85rem; z-index: 999;
-  opacity: 0; transition: all 0.3s ease; pointer-events: none;
+  position: fixed; bottom: 1.2rem; left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: var(--ink); color: #fff; padding: 0.5rem 1rem;
+  border-radius: 8px; font-size: 0.8rem; z-index: 999;
+  opacity: 0; transition: all 0.3s; pointer-events: none; white-space: nowrap;
 }
 .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
+/* ===== 动画 ===== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes cardFlyIn {
+  from { opacity: 0; transform: translateY(30px) scale(0.9); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.station-preview.open .station-step-card { animation: cardFlyIn 0.5s ease forwards; }
+.station-preview.open .station-step-card:nth-child(1) { animation-delay: 0.1s; }
+.station-preview.open .station-step-card:nth-child(2) { animation-delay: 0.2s; }
+.station-preview.open .station-step-card:nth-child(3) { animation-delay: 0.3s; }
+
 /* ===== 响应式 ===== */
 @media (max-width: 640px) {
-  .nav-links { display: none; position: absolute; top: 56px; left: 0; right: 0; background: rgba(250,247,240,0.98); padding: 0.8rem; border-bottom: 1px solid var(--rule); flex-direction: column; }
+  .nav-links {
+    display: none; position: absolute; top: 48px; left: 0; right: 0;
+    background: rgba(250,247,240,0.98); padding: 0.6rem;
+    border-bottom: 1px solid var(--rule); flex-direction: column;
+  }
   .nav-links.open { display: flex; }
   .nav-toggle { display: block; }
-  .hero h1 { font-size: 1.5rem; }
-  .pain-grid { grid-template-columns: 1fr; }
-  .identity-grid { grid-template-columns: repeat(2, 1fr); }
-  .deliver-grid { grid-template-columns: 1fr; }
-  .form-row { grid-template-columns: 1fr; }
-  .section-title { font-size: 1.2rem; }
-  section { padding: 2.5rem 0; }
-}
-@media (max-width: 380px) {
-  .identity-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 1.4rem; }
+  .gen-row { grid-template-columns: 1fr; }
+  .quick-grid { grid-template-columns: repeat(2, 1fr); }
+  .safety-grid { grid-template-columns: 1fr; }
+  .station-grid { grid-template-columns: 1fr; }
+  .task-prompt-grid { grid-template-columns: 1fr; }
+  .id-card { width: 140px; }
+  .station-step-card:nth-child(1) { transform: none; }
+  .station-step-card:nth-child(2) { transform: none; }
+  .station-step-card:nth-child(3) { transform: none; }
+  section { padding: 2rem 0; }
 }
 </style>
 </head>
@@ -323,761 +408,883 @@ section { padding: 3.5rem 0; }
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <div class="nav-brand">🌿 小城 AI 上手指南</div>
-    <button class="nav-toggle" id="navToggle" aria-label="菜单"><span></span></button>
+    <button class="nav-toggle" id="navToggle"><span></span></button>
     <div class="nav-links" id="navLinks">
-      <a href="#hero">首页</a>
-      <a href="#pain">你在哪</a>
-      <a href="#identity">选身份</a>
-      <a href="#deliver">能做什么</a>
-      <a href="#generator">生成器</a>
-      <a href="#plan">7 天计划</a>
-      <a href="#tools">用哪个</a>
-      <a href="#safety">安全</a>
+      <a href="#hero" class="active">首页</a>
+      <a href="#tools">工具</a>
+      <a href="#plan">计划</a>
+      <a href="#station">服务站</a>
     </div>
   </div>
 </nav>
 
-<!-- ===== 首页 ===== -->
-<section class="hero" id="hero">
+<!-- ===== Section 1: 首页 + 身份选择 ===== -->
+<section id="hero">
   <div class="container">
-    <h1>听说 AI 很厉害？<br>别急，从<span class="accent">一件真事</span>开始</h1>
-    <p>不用懂技术。10 分钟，跟着做一个跟你有关的小任务，你就会发现：原来我也能用 AI。</p>
+    <div style="height:20px;"></div>
+    <h1>让每个普通人都能轻松用上AI</h1>
+    <p class="hero-desc">我们不只是教技术，而是帮普通人建立一种新认知：AI 已经可以帮你完成很多具体小事。</p>
+    <p class="hero-vision">不用成为技术专家。只要知道打开 AI、说清需求、拿到结果，这件事每个人都能做到。</p>
     <div class="hero-actions">
-      <a href="#identity" class="btn btn-primary">开始试试 →</a>
+      <a href="#identityGrid" class="btn btn-primary">开始试试 →</a>
       <a href="#tools" class="btn btn-outline">看看有哪些工具</a>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 痛点引导 ===== -->
-<section id="pain">
-  <div class="container">
-    <div class="section-divider"></div>
-    <h2 class="section-title">你可能卡在这两件事上</h2>
-    <p class="section-desc">别急，大部分人第一次用 AI 都是这样。</p>
-    <div class="pain-grid">
-      <div class="pain-card" onclick="document.getElementById('deliver').scrollIntoView({behavior:'smooth',block:'start'})">
-        <h4>不知道 AI 现在能做什么</h4>
-        <p>只听过豆包、Kimi 这些名字，但不知道它们到底能帮我干什么。其实 AI 已经能帮你做不少"能直接用的东西"。</p>
-        <button class="btn btn-outline btn-sm">看看 AI 能交付什么 →</button>
-      </div>
-      <div class="pain-card" onclick="document.getElementById('identity').scrollIntoView({behavior:'smooth',block:'start'})">
-        <h4>不知道该怎么开始用</h4>
-        <p>打开 AI 之后不知道第一句话该怎么问，结果不好也不知道怎么改。其实只要跟它聊天就行。</p>
-        <button class="btn btn-primary btn-sm">3 分钟试一次 →</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 选身份 ===== -->
-<section id="identity">
-  <div class="container">
-    <div class="section-divider"></div>
-    <h2 class="section-title">第 1 步：选身份</h2>
-    <p class="section-desc">先选一个最像你的身份。</p>
-    <div class="identity-grid" id="identityGrid">
-      <div class="identity-card" data-key="shop" onclick="pickIdentity(this)">
-        <div class="identity-emoji">🏪</div>
-        <h4>小店老板</h4>
-        <p>早餐店、小超市、奶茶店……</p>
-      </div>
-      <div class="identity-card" data-key="office" onclick="pickIdentity(this)">
-        <div class="identity-emoji">📋</div>
-        <h4>基层办公</h4>
-        <p>村委、社区、街道办</p>
-      </div>
-      <div class="identity-card" data-key="farm" onclick="pickIdentity(this)">
-        <div class="identity-emoji">🌾</div>
-        <h4>农产品经营</h4>
-        <p>种果子、养殖、农产品销售</p>
-      </div>
-      <div class="identity-card" data-key="learner" onclick="pickIdentity(this)">
-        <div class="identity-emoji">📚</div>
-        <h4>想学新东西</h4>
-        <p>考证、自学、成长</p>
-      </div>
-      <div class="identity-card" data-key="family" onclick="pickIdentity(this)">
-        <div class="identity-emoji">👨‍👩‍👧</div>
-        <h4>家里管事的</h4>
-        <p>带娃、买菜、安排事</p>
-      </div>
-      <div class="identity-card" data-key="creator" onclick="pickIdentity(this)">
-        <div class="identity-emoji">✍️</div>
-        <h4>做内容的人</h4>
-        <p>拍短视频、写朋友圈</p>
-      </div>
-      <div class="identity-card" data-key="craftsman" onclick="pickIdentity(this)">
-        <div class="identity-emoji">🪚</div>
-        <h4>手艺人</h4>
-        <p>木匠、裁缝、维修工……</p>
-      </div>
-      <div class="identity-card" data-key="returnee" onclick="pickIdentity(this)">
-        <div class="identity-emoji">🏠</div>
-        <h4>返乡创业</h4>
-        <p>回乡做电商、开民宿……</p>
-      </div>
-      <div class="identity-card" data-key="explorer" onclick="pickIdentity(this)">
-        <div class="identity-emoji">🧭</div>
-        <h4>还在摸索</h4>
-        <p>没想好做什么，先看看</p>
-      </div>
+      <a href="#station" class="btn btn-ghost">看看 AI 场景服务站</a>
     </div>
 
-    <!-- 任务详情 -->
+    <!-- 身份选择卡片网格 -->
+    <div class="identity-grid" id="identityGrid"></div>
+
+    <!-- 任务面板 -->
     <div class="task-panel" id="taskPanel">
-      <div class="task-panel-header">
-        <span class="icon" id="tIcon">🏪</span>
-        <h3 id="tTitle">小店老板 · 10 分钟任务</h3>
-      </div>
-      <div class="task-prompts" id="tPrompts"></div>
+      <div class="task-panel-header" id="taskPanelHeader"></div>
+      <div class="task-prompt-grid" id="taskPromptGrid"></div>
     </div>
   </div>
 </section>
 
-<!-- ===== AI 能帮你交付什么 ===== -->
-<section id="deliver">
+<!-- ===== Section 2: 生成器1 ===== -->
+<section id="generator1" style="scroll-margin-top:72px;">
   <div class="container">
-    <div class="section-divider"></div>
-    <h2 class="section-title">AI 能帮你交付什么</h2>
-    <p class="section-desc">这些都是 AI 已经能帮你做出来的"成品"。看中哪个，直接带到生成器。</p>
-    <div class="deliver-grid" id="deliverGrid">
-
-      <div class="deliver-card">
-        <h4>📝 会议纪要</h4>
-        <p>开完会一堆零散记录，AI 帮你整理成结论 + 待办 + 负责人。</p>
-        <div class="deliver-prompt">"请把下面的会议记录整理成会议结论 + 待办事项 + 负责人 + 截止时间"</div>
-        <div class="deliver-actions">
-          <button class="btn btn-primary btn-sm" onclick="fillDeliver('开会很多但来不及整理记录的人','帮我整理一份会议纪要','分成结论、待办、负责人、截止时间','用表格形式输出')">带到生成器</button>
-          <button class="btn btn-ghost btn-sm" onclick="copyDeliver(this)">复制提问</button>
+    <h2 class="section-title" style="text-align:center;">AI 提示词生成器</h2>
+    <div class="gen-box">
+      <div class="gen-form">
+        <div>
+          <label class="gen-label">你是谁？ <span>（随便说）</span></label>
+          <input class="gen-input" id="g1Who" placeholder="比如：我是县城开早餐店的">
         </div>
-      </div>
-
-      <div class="deliver-card">
-        <h4>✅ 每日任务清单</h4>
-        <p>一天事很多不知道先做什么，AI 帮你排优先级。</p>
-        <div class="deliver-prompt">"请把我今天要做的事情整理成一个按优先级排序的任务清单"</div>
-        <div class="deliver-actions">
-          <button class="btn btn-primary btn-sm" onclick="fillDeliver('每天事情很多的人','帮我排一下今天的任务优先级','按重要和紧急程度排序','列出清单，标上建议时间')">带到生成器</button>
-          <button class="btn btn-ghost btn-sm" onclick="copyDeliver(this)">复制提问</button>
+        <div>
+          <label class="gen-label">想做什么？ <span>（具体点）</span></label>
+          <input class="gen-input" id="g1What" placeholder="比如：明天上新豆浆，写几条朋友圈">
         </div>
-      </div>
-
-      <div class="deliver-card">
-        <h4>📊 工作汇报</h4>
-        <p>做了很多事但不知道怎么写汇报，AI 帮你总结。</p>
-        <div class="deliver-prompt">"请把下面这些工作内容整理成一份简洁的周报，语气正式但不要太空"</div>
-        <div class="deliver-actions">
-          <button class="btn btn-primary btn-sm" onclick="fillDeliver('需要写工作汇报的上班族','帮我整理一份周报','语气正式但简洁，不要太空','分成本周完成、下周计划、需要协调三部分')">带到生成器</button>
-          <button class="btn btn-ghost btn-sm" onclick="copyDeliver(this)">复制提问</button>
-        </div>
-      </div>
-
-      <div class="deliver-card">
-        <h4>📢 宣传文案</h4>
-        <p>小店上新、活动促销、农产品介绍，AI 帮你写朋友圈。</p>
-        <div class="deliver-prompt">"请帮我写 3 条适合朋友圈发的活动文案，语气自然，不要太像广告"</div>
-        <div class="deliver-actions">
-          <button class="btn btn-primary btn-sm" onclick="fillDeliver('开小店、做活动的人','帮我写几条朋友圈宣传文案','语气自然，不要太像广告','给我 3 条让我挑')">带到生成器</button>
-          <button class="btn btn-ghost btn-sm" onclick="copyDeliver(this)">复制提问</button>
-        </div>
-      </div>
-
-      <div class="deliver-card">
-        <h4>📋 表格和清单</h4>
-        <p>采购、报销、活动准备、客户跟进，AI 帮你列全。</p>
-        <div class="deliver-prompt">"请帮我列一份活动准备清单，分成物料、人员、时间、注意事项"</div>
-        <div class="deliver-actions">
-          <button class="btn btn-primary btn-sm" onclick="fillDeliver('需要筹备活动或整理流程的人','帮我列一份清单','分成类别，尽量全面','用表格或分类列表形式')">带到生成器</button>
-          <button class="btn btn-ghost btn-sm" onclick="copyDeliver(this)">复制提问</button>
-        </div>
-      </div>
-
-      <div class="deliver-card">
-        <h4>🎬 短视频脚本</h4>
-        <p>想拍视频但不知道怎么开头，AI 帮你写脚本和分镜。</p>
-        <div class="deliver-prompt">"请帮我写一个 60 秒短视频脚本，主题是介绍县城一家早餐店"</div>
-        <div class="deliver-actions">
-          <button class="btn btn-primary btn-sm" onclick="fillDeliver('想拍短视频但不会写脚本的人','帮我写一个短视频脚本','自然一点，像跟观众聊天','60 秒左右，给我开头 + 中间 + 结尾')">带到生成器</button>
-          <button class="btn btn-ghost btn-sm" onclick="copyDeliver(this)">复制提问</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ===== AI 工具推荐 · 场景选择器 ===== -->
-<section id="tools">
-  <div class="container">
-    <div class="section-divider"></div>
-    <h2 class="section-title">我该从哪个 AI 工具开始？</h2>
-    <p class="section-desc">先选你现在的场景，再看看推荐哪些工具。没有广告，都是真实建议。</p>
-    <div class="scene-tabs" id="sceneTabs">
-      <div class="scene-tab active" data-scene="office" onclick="pickScene(this)">💻 办公场景</div>
-      <div class="scene-tab" data-scene="ask" onclick="pickScene(this)">❓ 提问需求</div>
-      <div class="scene-tab" data-scene="agent" onclick="pickScene(this)">🤖 搭助手</div>
-      <div class="scene-tab" data-scene="create" onclick="pickScene(this)">🛠️ 做网页</div>
-      <div class="scene-tab" data-scene="first" onclick="pickScene(this)">🌱 第一次用</div>
-    </div>
-
-    <div class="scene-panel active" id="scene-office">
-      <p class="scene-desc-text">写通知、整理会议纪要、做工作汇报、改文件——这些日常办公事，下面这些工具都能帮。</p>
-      <div class="scene-tools">
-        <span class="scene-tool-tag">通义千问</span>
-        <span class="scene-tool-tag">文心一言</span>
-        <span class="scene-tool-tag">豆包</span>
-        <span class="scene-tool-tag">Kimi</span>
-        <span class="scene-tool-tag">腾讯元宝</span>
-        <span class="scene-tool-tag">讯飞星火</span>
-        <span class="scene-tool-tag">IMA</span>
-      </div>
-      <div class="scene-note">💡 通义千问和文心一言做表格、PPT 比较强；Kimi 能读长文档；豆包上手最简单；IMA 可以建个人知识库。</div>
-    </div>
-
-    <div class="scene-panel" id="scene-ask">
-      <p class="scene-desc-text">想问问题、查知识、学东西、解释概念——这些工具就像一个随时能问的"百科朋友"。</p>
-      <div class="scene-tools">
-        <span class="scene-tool-tag">DeepSeek</span>
-        <span class="scene-tool-tag">Kimi</span>
-        <span class="scene-tool-tag">豆包</span>
-        <span class="scene-tool-tag">智谱清言</span>
-        <span class="scene-tool-tag">文心一言</span>
-        <span class="scene-tool-tag">IMA</span>
-      </div>
-      <div class="scene-note">💡 DeepSeek 推理能力强，适合有深度的问题；Kimi 适合查资料、读长文；豆包适合快速问日常问题；IMA 适合整理知识后问答。</div>
-    </div>
-
-    <div class="scene-panel" id="scene-agent">
-      <p class="scene-desc-text">想让 AI 自动回复客户、收集表单、按流程处理事情——可以试试搭一个"智能体小助手"。</p>
-      <div class="scene-tools">
-        <span class="scene-tool-tag">扣子 Coze</span>
-        <span class="scene-tool-tag">Dify</span>
-      </div>
-      <div class="scene-note">💡 扣子（字节跳动出品）门槛最低，像搭积木一样就能搭一个助手；Dify 适合想自定义更多的用户。</div>
-    </div>
-
-    <div class="scene-panel" id="scene-create">
-      <p class="scene-desc-text">有一个想法，想快速做成一个能打开的网页、互动页面或小工具——不用学编程，说话就能做。</p>
-      <div class="scene-tools">
-        <span class="scene-tool-tag">TRAE Work</span>
-        <span class="scene-tool-tag">扣子 Coze</span>
-      </div>
-      <div class="scene-note">💡 TRAE Work 适合有想法但不懂代码的人；扣子也能做简单的对话网页和互动页面。</div>
-    </div>
-
-    <div class="scene-panel" id="scene-first">
-      <p class="scene-desc-text">第一次用，不用纠结哪个最好。AI 工具发展很快，今天好用的明天可能又有新的。</p>
-      <div class="scene-tools">
-        <span class="scene-tool-tag">豆包</span>
-        <span class="scene-tool-tag">DeepSeek</span>
-        <span class="scene-tool-tag">Kimi</span>
-      </div>
-      <div class="scene-note">💡 关键是：先选一个能打开、能免费试、能解决今天这个小问题的。用顺手了再慢慢了解别的。</div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 提示词生成器 ===== -->
-<section id="generator">
-  <div class="container">
-    <div class="section-divider"></div>
-    <h2 class="section-title">第 3 步：生成提示词</h2>
-    <p class="section-desc">像跟朋友聊天一样填几句，我帮你拼成一段可以直接发给 AI 的话。</p>
-    <div class="generator-wrap">
-      <div class="generator-form">
-        <div class="form-group">
-          <label>你是谁？ <span>（随便说）</span></label>
-          <input class="form-input" id="gWho" placeholder="比如：我是县城开早餐店的">
-        </div>
-        <div class="form-group">
-          <label>想做什么？ <span>（具体点）</span></label>
-          <input class="form-input" id="gWhat" placeholder="比如：明天上新豆浆，写几条朋友圈">
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label>有什么要求？ <span>（没有就不填）</span></label>
-            <textarea class="form-textarea" id="gReq" placeholder="比如：别太像广告，亲切一点"></textarea>
+        <div class="gen-row">
+          <div>
+            <label class="gen-label">有什么要求？ <span>（没有就不填）</span></label>
+            <textarea class="gen-textarea" id="g1Req" placeholder="比如：别太像广告"></textarea>
           </div>
-          <div class="form-group">
-            <label>想怎么输出？ <span>（没有就不填）</span></label>
-            <textarea class="form-textarea" id="gOut" placeholder="比如：给我 2 个版本"></textarea>
+          <div>
+            <label class="gen-label">想怎么输出？ <span>（没有就不填）</span></label>
+            <textarea class="gen-textarea" id="g1Out" placeholder="比如：给我 2 个版本"></textarea>
           </div>
         </div>
-        <button class="btn btn-primary" onclick="makePrompt()">✨ 帮我拼好这段话</button>
       </div>
-      <div class="generator-result" id="gResult">
-        <h4>📋 帮你拼好了</h4>
-        <div class="result-text" id="rText"></div>
-        <div class="result-actions">
-          <button class="btn btn-primary btn-sm" onclick="copyResult()">复制，发给 AI</button>
-          <button class="btn btn-ghost btn-sm" onclick="document.getElementById('gResult').classList.remove('visible')">收起</button>
+      <button class="btn btn-primary" style="margin-top:0.8rem;width:100%;justify-content:center;" onclick="makePrompt1()">生成提示词</button>
+
+      <div class="gen-result" id="g1Result">
+        <div class="gen-edit-hint">✏️ 你可以直接编辑下面这段话，改到满意再复制 ↓</div>
+        <textarea id="g1ResultText" rows="6"></textarea>
+        <div class="gen-actions">
+          <button class="btn btn-primary btn-sm" onclick="copyResult('g1ResultText')">复制，发给 AI</button>
+          <button class="btn btn-ghost btn-sm" onclick="document.getElementById('g1Result').classList.remove('visible')">收起</button>
         </div>
-        <div class="result-tip">
-          📱 去手机桌面打开你常用的 AI App（豆包、Kimi、DeepSeek 等），把上面这段话粘贴进去。如果手机里还没有，可以在应用商店搜一下名字安装。
-        </div>
-        <div class="result-tip">
-          💡 粘贴后如果不满意，直接告诉 AI：再短一点、再朴实一点、更像朋友圈一点。
-        </div>
+        <div class="gen-tip">📱 去手机打开 AI App（豆包、Kimi、DeepSeek 等），把上面的话粘贴进去</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== 7 天计划 ===== -->
-<section id="plan" style="background: var(--bg2);">
+<!-- ===== Section 3: 快速模板 + 生成器2 ===== -->
+<section id="quickgen" style="scroll-margin-top:72px;">
   <div class="container">
-    <div class="section-divider"></div>
-    <h2 class="section-title">7 天养成计划</h2>
-    <p class="section-desc">不用每天研究新工具，只要每天完成一个小动作，慢慢就会习惯用 AI 了。</p>
-    <div style="margin-bottom:1rem;padding:0.6rem 1rem;background:var(--accent-light);border-radius:8px;font-size:0.82rem;color:var(--accent);" id="planHint">
-      📌 完成下面 7 个任务，就能进入更高阶段。每天做一个就行。
+    <h2 class="section-title" style="text-align:center;">不知道从哪开始？点一个试试</h2>
+    <div class="quick-grid" id="quickGrid"></div>
+
+    <div class="quickgen-box">
+      <h3 style="font-size:0.95rem;font-weight:700;text-align:center;margin-bottom:0.8rem;">或者，一句话告诉 AI 你要什么</h3>
+      <textarea class="quickgen-textarea" id="g2Input" placeholder="比如：帮我写一段发朋友圈的文案，我卖蜂蜜的"></textarea>
+      <button class="btn btn-primary" style="margin-top:0.6rem;width:100%;justify-content:center;" onclick="makePrompt2()">生成</button>
+
+      <div class="gen-result" id="g2Result" style="margin-top:1rem;">
+        <div class="gen-edit-hint">✏️ 你可以直接编辑下面这段话，改到满意再复制 ↓</div>
+        <textarea id="g2ResultText" rows="6"></textarea>
+        <div class="gen-actions">
+          <button class="btn btn-primary btn-sm" onclick="copyResult('g2ResultText')">复制，发给 AI</button>
+          <button class="btn btn-ghost btn-sm" onclick="document.getElementById('g2Result').classList.remove('visible')">收起</button>
+        </div>
+        <div class="gen-tip">📱 去手机打开 AI App（豆包、Kimi、DeepSeek 等），把上面的话粘贴进去</div>
+      </div>
     </div>
+  </div>
+</section>
+
+<!-- ===== Section 4: AI 工具推荐 ===== -->
+<section id="tools" class="tools-section" style="scroll-margin-top:72px;">
+  <div class="container">
+    <h2 class="section-title" style="text-align:center;">用哪个 AI 工具？</h2>
+    <div class="scene-pills" id="scenePills"></div>
+    <div id="scenePanels"></div>
+    <div class="tools-install-tip">📌 不同工具有不同用途，别纠结，先动起来。<br>大部分都免费，手机应用商店搜一下就能用。</div>
+  </div>
+</section>
+
+<!-- ===== Section 5: 7 天养成计划 ===== -->
+<section id="plan" class="plan-section" style="scroll-margin-top:72px;">
+  <div class="container">
+    <h2 class="section-title" style="text-align:center;">7 天养成计划</h2>
+    <p class="section-desc" style="text-align:center;">每天一个小动作，慢慢就会习惯用 AI</p>
+    <p class="plan-guide" style="margin-left:auto;margin-right:auto;">每闯过 7 关，解锁新阶段。<br>四轮成长之路：入门期 → 执行期 → 进阶期 → 创造期，越走越强。</p>
     <div class="plan-header">
       <span class="plan-cycle" id="pCycle">第 1 轮 · 入门期</span>
-      <div class="progress-wrap"><div class="progress-fill" id="pFill" style="width:0%"></div></div>
-      <div style="font-size:0.85rem;font-weight:700;color:var(--accent);" id="pText">0 / 7</div>
+      <div class="plan-progress"><div class="plan-fill" id="pFill" style="width:0%"></div></div>
+      <span class="plan-count" id="pText">0 / 7</span>
     </div>
     <div class="plan-list" id="pList"></div>
     <div class="plan-complete" id="pDone">
       <h4 id="pDoneTitle">🎉 7 天都做完了！</h4>
       <p id="pDoneDesc">准备好进入下一轮了吗？</p>
-      <button class="btn btn-primary" id="pNextBtn" style="margin-top:1rem;">进入下一轮 →</button>
+      <button class="btn btn-primary" id="pNextBtn" style="margin-top:0.8rem;">进入下一轮 →</button>
     </div>
-    <div style="text-align:center;margin-top:1rem;">
+    <div class="plan-reset">
       <button class="btn btn-ghost btn-sm" onclick="resetPlan()">重置当前轮次</button>
     </div>
   </div>
 </section>
 
-<!-- ===== AI 工具推荐 · 场景选择器 ===== -->
-<!-- ===== 安全提醒 ===== -->
-<section id="safety" style="background: var(--bg2);">
+<!-- ===== Section 6: 安全提醒 ===== -->
+<section id="safety" style="scroll-margin-top:72px;">
   <div class="container">
-    <div class="section-divider"></div>
-    <h2 class="section-title">用 AI 之前，记住这 3 条</h2>
-    <div class="safety-list">
-      <div class="safety-item">
-        <div class="safety-icon">🔒</div>
-        <div>
-          <h4>隐私别发</h4>
-          <p>身份证号、验证码、银行卡、客户资料、单位机密不要输入给 AI。</p>
-        </div>
+    <h2 class="section-title" style="text-align:center;">用 AI 之前记住这 3 条</h2>
+    <div class="safety-grid">
+      <div class="safety-card">
+        <h4>🔒 隐私别发</h4>
+        <p>身份证号、银行卡号、验证码不要输入给 AI</p>
       </div>
-      <div class="safety-item">
-        <div class="safety-icon">🔍</div>
-        <div>
-          <h4>重要信息要核对</h4>
-          <p>医疗、法律、财务、政策、价格等内容，AI 给的不要直接信，自己再确认一遍。</p>
-        </div>
+      <div class="safety-card">
+        <h4>🔍 重要信息要核对</h4>
+        <p>医疗、法律、政策等内容，AI 给的不要直接信</p>
       </div>
-      <div class="safety-item">
-        <div class="safety-icon">⚖️</div>
-        <div>
-          <h4>AI 是帮手</h4>
-          <p>它可以给初稿和思路，但最后决定还是人来做。重要的决定不要全靠 AI。</p>
-        </div>
+      <div class="safety-card">
+        <h4>⚖️ AI 是帮手</h4>
+        <p>它可以给初稿，但最后决定还是人来做</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ===== Section 7: VR 服务站 ===== -->
+<section id="station" style="scroll-margin-top:72px;">
+  <div class="container">
+    <h2 class="section-title" style="text-align:center;">小镇 AI 服务站</h2>
+    <p class="station-intro">AI，不止于工作——未来生活，一副眼镜就够了。<br>想挂号？直接语音呼叫。<br>要导航？虚拟助手实时指引。<br>写通知、做计划，开口就行，无需打字。<br><br>AR 眼镜将让这一切成为现实——虚拟助手随时待命，帮你高效解决生活需求。<br>尝试拥抱 AI，也许是拥抱更自由的生活方式。</p>
+    <div class="station-grid" id="stationGrid"></div>
+    <div id="stationPreviews"></div>
+    <div class="coming-soon-note">积极努力开发更多功能中，敬请期待……</div>
   </div>
 </section>
 
 <!-- ===== 页脚 ===== -->
 <footer class="footer">
   <div class="container">
-    <p>🌿 小城 AI 上手指南 — 让每个人都能迈出第一步</p>
-    <p class="privacy">本页面不收集个人信息。7 天打卡进度只保存在当前浏览器本机。</p>
+    <p>🌿 让每个人都能迈出第一步</p>
+    <p class="vr-note">「小镇 AI 服务站」VR 版本正在开发中，由 TRAE + PICO 联合打造</p>
   </div>
 </footer>
 
 <!-- ===== Toast ===== -->
 <div class="toast" id="toast"></div>
 
-<!-- ===== JS ===== -->
 <script>
 (function() {
-  'use strict';
+'use strict';
 
-  // ===== 身份数据 =====
-  var data = {
-    shop: {
-      icon: '🏪', title: '小店老板',
-      prompts: [
-        { label: '新品发朋友圈', desc: '上新了，想告诉老顾客', fill: { who: '我是县城开早餐店的老板', what: '明天上新豆浆，想写 3 条朋友圈文案', req: '别太像广告，像跟老顾客聊天', out: '3 条让我挑' } },
-        { label: '回复顾客抱怨', desc: '顾客说排队太久，不知怎么回', fill: { who: '我是开奶茶店的', what: '有顾客说排队太久，帮我写一段不生硬的回复', req: '态度好，别像模板', out: '一段话就行' } },
-        { label: '搞活动想说法', desc: '想做满减活动，想几个说法', fill: { who: '我是开小超市的', what: '周末想搞满 20 减 3 的活动，帮我想 3 个说法', req: '接地气，别太官方', out: '3 个版本' } },
-        { label: '写营业时间通知', desc: '春节要调营业时间', fill: { who: '我是开理发店的', what: '春节营业时间要调整，帮我写一条贴门口的通知', req: '简单清楚，让人一看就懂', out: '50 字左右' } }
-      ]
-    },
-    office: {
-      icon: '📋', title: '基层办公',
-      prompts: [
-        { label: '口头通知整理成正式通知', desc: '领导说了几句，要写通知', fill: { who: '我在村委会负责宣传工作', what: '领导让我通知周五下午开会，帮我写成发微信群的通知', req: '正式但不要太死板', out: '200 字左右' } },
-        { label: '会议记录整理成重点', desc: '开完会一堆零散记录', fill: { who: '我在街道办工作', what: '帮我把下面的会议记录整理成 5 条重点', req: '分条列出，结论+待办', out: '5 条重点' } },
-        { label: '把一段话改得更礼貌', desc: '怕语气太硬得罪人', fill: { who: '我在社区工作', what: '帮我把我写的这段话改得更礼貌、更清楚', req: '意思不变，语气柔和一点', out: '改好的版本' } },
-        { label: '写工作周报', desc: '做了很多事不知怎么汇报', fill: { who: '我是基层办公人员', what: '帮我把这周做的工作整理成一份周报', req: '简洁，分条写', out: '分本周完成、下周计划' } }
-      ]
-    },
-    farm: {
-      icon: '🌾', title: '农产品经营',
-      prompts: [
-        { label: '提炼农产品卖点', desc: '东西好但不会说', fill: { who: '我家种脐橙的，种了十几年', what: '帮我想几句朴实的产品介绍', req: '不要吹牛，写最真实的优点', out: '3 个卖点 + 一段朋友圈文案' } },
-        { label: '写产品介绍（不夸大）', desc: '怕写过头不像真的', fill: { who: '我家养土鸡的', what: '帮我写一段产品介绍，不要夸大功效', req: '朴实，用大白话', out: '100 字左右' } },
-        { label: '短视频口播开头', desc: '想拍视频不知怎么说', fill: { who: '我在农村，平时拍点短视频', what: '帮我写一个介绍我家蜂蜜的短视频口播开头', req: '自然，别像背台词', out: '3 个版本让我挑' } },
-        { label: '客户问价怎么回', desc: '客户问能不能便宜', fill: { who: '我是卖自家茶叶的', what: '客户说别人家更便宜，帮我写一段不卑不亢的回复', req: '说清楚我的东西好在哪', out: '一段话' } }
-      ]
-    },
-    learner: {
-      icon: '📚', title: '想学新东西',
-      prompts: [
-        { label: '解释一个不懂的词', desc: '老听到但不知道啥意思', fill: { who: '我就是个普通人，平时看点新闻', what: '帮我解释"内卷"是什么意思', req: '用大白话，举生活中的例子', out: '让我一听就懂' } },
-        { label: '解释一个政策', desc: '看不懂政策文件', fill: { who: '我在县城上班', what: '帮我用大白话解释一下灵活就业社保补贴政策', req: '说清楚谁能申请、怎么申请', out: '分条列出' } },
-        { label: '帮我列学习计划', desc: '想考证不知怎么安排', fill: { who: '我想考初级会计', what: '帮我列一个 3 个月的学习计划', req: '我是零基础，每天能学 2 小时', out: '按周排' } },
-        { label: '把难懂的讲简单', desc: '书上写得太专业', fill: { who: '我在自学 Excel', what: '帮我把 VLOOKUP 函数用大白话讲清楚', req: '举一个实际的例子', out: '讲解 + 例子' } }
-      ]
-    },
-    family: {
-      icon: '👨‍👩‍👧', title: '家里管事的',
-      prompts: [
-        { label: '出门办事清单', desc: '怕忘带东西', fill: { who: '我是家里管事的，平时带娃比较多', what: '明天带孩子去县城办身份证，帮我想清单', req: '尽量详细，别让我忘带东西', out: '按重要程度排' } },
-        { label: '家庭出行计划', desc: '想带家人出去玩', fill: { who: '一家三口，孩子 8 岁', what: '周末想去附近城市玩一天，帮我做个简单计划', req: '预算 500 以内，孩子要喜欢', out: '时间 + 地点 + 预算' } },
-        { label: '年货采购清单', desc: '过年要买一堆东西', fill: { who: '过年要准备年货', what: '帮我列一份年货采购清单', req: '分吃的、用的、送人的', out: '分类清单' } },
-        { label: '家庭一周菜谱', desc: '每天不知做什么菜', fill: { who: '一家四口，有老人有小孩', what: '帮我列一周晚餐菜谱', req: '简单好做，营养均衡', out: '按天列出' } }
-      ]
-    },
-    creator: {
-      icon: '✍️', title: '做内容的人',
-      prompts: [
-        { label: '短视频口播开头', desc: '对着镜头不知说什么', fill: { who: '我在农村老家，平时拍点日常短视频', what: '想拍 30 秒介绍腊肉的视频，帮我写开头', req: '自然一点，别太像背台词', out: '3 个版本让我挑' } },
-        { label: '想 5 个选题', desc: '不知道拍什么', fill: { who: '我想做县城美食探店账号', what: '帮我出 5 个选题灵感', req: '要接地气，小县城能拍到的', out: '5 个选题 + 一句简介' } },
-        { label: '写视频标题', desc: '拍完了不知道起什么标题', fill: { who: '我拍了一条做红薯粉的视频', what: '帮我起 5 个抖音标题', req: '吸引人但不要标题党', out: '5 个标题' } },
-        { label: '改一段文案更口语', desc: '写的太书面了', fill: { who: '我写了一段产品介绍但太正式', what: '帮我把这段话改得更口语、更像聊天', req: '意思不变，像说话那样', out: '改好的版本' } }
-      ]
-    },
-    craftsman: {
-      icon: '🪚', title: '手艺人',
-      prompts: [
-        { label: '写一段手艺介绍', desc: '有人想了解你的手艺，但不知道怎么介绍', fill: { who: '我是做传统木工的', what: '帮我写一段介绍我手艺的话，让客户看了想找我做', req: '真实，不要吹牛，体现出手艺的价值', out: '一段话，100 字左右' } },
-        { label: '朋友圈晒作品配文', desc: '做好了作品想发朋友圈，但不知道写什么', fill: { who: '我是做手工皮具的', what: '帮我写几条晒作品的朋友圈文案', req: '体现出用心做的感觉，不要太像广告', out: '3 条让我挑' } },
-        { label: '客户问价怎么回', desc: '报完价客户说贵，不知道怎么回', fill: { who: '我是做家电维修的', what: '客户说我报价贵，帮我写一段不卑不亢的回复', req: '解释清楚贵在哪，但态度要好', out: '一段话' } },
-        { label: '起一个有记忆点的名字', desc: '想给自己的手艺工作室起个名字', fill: { who: '我想给我的木工工作室起个名字', what: '帮我起 5 个有记忆点的名字', req: '接地气，最好跟我们县有关，好记', out: '5 个名字 + 一句话说明' } }
-      ]
-    },
-    returnee: {
-      icon: '🏠', title: '返乡创业',
-      prompts: [
-        { label: '写一份项目介绍', desc: '想跟别人介绍自己的返乡创业项目', fill: { who: '我回乡做电商卖本地特产', what: '帮我写一段项目介绍，适合发给投资人或合作伙伴', req: '说清楚我为什么回来、做什么、有什么优势', out: '200 字左右' } },
-        { label: '做一份创业计划提纲', desc: '有想法但不知道怎么整理', fill: { who: '我想在老家开一家民宿', what: '帮我做一个创业计划的提纲', req: '简单实用，不要写得太复杂', out: '分几个大点列出' } },
-        { label: '写一条招工信息', desc: '回乡创业需要招人', fill: { who: '我在老家开了一个农产品加工厂', what: '帮我写一条招工信息，发村里微信群', req: '说清楚做什么、给多少钱、有什么要求', out: '一段话' } },
-        { label: '分析一个行业趋势', desc: '想了解自己想做的行业现在怎么样', fill: { who: '我想回乡做乡村旅游', what: '帮我分析一下现在乡村旅游的趋势和机会', req: '用大白话说，不要说太多专业词', out: '分机会和挑战两部分' } }
-      ]
-    },
-    explorer: {
-      icon: '🧭', title: '还在摸索',
-      prompts: [
-        { label: '问 AI 能帮我做什么', desc: '不知道 AI 能干啥', fill: { who: '我刚接触 AI，不太了解', what: '你能帮我做哪些事？列几个普通人能用上的', req: '用大白话说', out: '列 5-8 个就行' } },
-        { label: '帮我看看我适合学什么', desc: '想进步但不知从哪开始', fill: { who: '我在县城上班，想利用业余时间学点东西', what: '帮我分析一下我适合学什么', req: '先问我几个问题再建议', out: '先问问题' } },
-        { label: '解释 AI 到底是什么', desc: '概念都模糊', fill: { who: '我不太懂技术', what: '用大白话告诉我 AI 到底是什么，跟我用的百度搜索有啥区别', req: '举一个生活里的例子', out: '一段话讲明白' } },
-        { label: '试着让 AI 帮个小忙', desc: '先随便试试', fill: { who: '我是第一次用 AI', what: '随便帮我做一件事，让我看看你到底能干嘛', req: '你来挑一个简单的展示一下', out: '你看着办' } }
-      ]
-    }
-  };
+/* ===== 身份数据 ===== */
+var data = {
+  shop: {
+    icon: '🏪', title: '小店老板',
+    prompts: [
+      { label: '新品发圈', desc: '上新了，想告诉老顾客', fill: { who: '我是县城开早餐店的老板', what: '明天上新豆浆，想写 3 条朋友圈文案', req: '别太像广告，像跟老顾客聊天', out: '3 条让我挑' } },
+      { label: '回复顾客', desc: '顾客抱怨不知怎么回', fill: { who: '我是开奶茶店的', what: '有顾客说排队太久，帮我写一段不生硬的回复', req: '态度好，别像模板', out: '一段话就行' } },
+      { label: '搞活动', desc: '想做满减活动，想几个说法', fill: { who: '我是开小超市的', what: '周末想搞满 20 减 3 的活动，帮我想 3 个说法', req: '接地气，别太官方', out: '3 个版本' } },
+      { label: '写通知', desc: '春节要调营业时间', fill: { who: '我是开理发店的', what: '春节营业时间要调整，帮我写一条贴门口的通知', req: '简单清楚，一看就懂', out: '50 字左右' } }
+    ]
+  },
+  office: {
+    icon: '📋', title: '基层办公',
+    prompts: [
+      { label: '口头通知整理', desc: '领导说了几句，要写通知', fill: { who: '我在村委会负责宣传工作', what: '领导让我通知周五下午开会，帮我写成发微信群的通知', req: '正式但不要太死板', out: '200 字左右' } },
+      { label: '会议记录', desc: '开完会一堆零散记录', fill: { who: '我在街道办工作', what: '帮我把下面的会议记录整理成 5 条重点', req: '分条列出，结论+待办', out: '5 条重点' } },
+      { label: '改语气', desc: '怕语气太硬得罪人', fill: { who: '我在社区工作', what: '帮我把我写的这段话改得更礼貌、更清楚', req: '意思不变，语气柔和一点', out: '改好的版本' } },
+      { label: '写周报', desc: '做了很多事不知怎么汇报', fill: { who: '我是基层办公人员', what: '帮我把这周做的工作整理成一份周报', req: '简洁，分条写', out: '分本周完成、下周计划' } }
+    ]
+  },
+  farm: {
+    icon: '🌾', title: '农产品经营',
+    prompts: [
+      { label: '提炼卖点', desc: '东西好但不会说', fill: { who: '我家种脐橙的，种了十几年', what: '帮我想几句朴实的产品介绍', req: '不要吹牛，写最真实的优点', out: '3 个卖点 + 一段朋友圈文案' } },
+      { label: '产品介绍', desc: '怕写过头不像真的', fill: { who: '我家养土鸡的', what: '帮我写一段产品介绍，不要夸大功效', req: '朴实，用大白话', out: '100 字左右' } },
+      { label: '视频口播', desc: '想拍视频不知怎么说', fill: { who: '我在农村，平时拍点短视频', what: '帮我写一个介绍我家蜂蜜的短视频口播开头', req: '自然，别像背台词', out: '3 个版本让我挑' } },
+      { label: '客户问价', desc: '客户问能不能便宜', fill: { who: '我是卖自家茶叶的', what: '客户说别人家更便宜，帮我写一段不卑不亢的回复', req: '说清楚我的东西好在哪', out: '一段话' } }
+    ]
+  },
+  learner: {
+    icon: '📚', title: '想学新东西',
+    prompts: [
+      { label: '解释词语', desc: '老听到但不知道啥意思', fill: { who: '我就是个普通人，平时看点新闻', what: '帮我解释"内卷"是什么意思', req: '用大白话，举生活中的例子', out: '让我一听就懂' } },
+      { label: '解释政策', desc: '看不懂政策文件', fill: { who: '我在县城上班', what: '帮我用大白话解释一下灵活就业社保补贴政策', req: '说清楚谁能申请、怎么申请', out: '分条列出' } },
+      { label: '学习计划', desc: '想考证不知怎么安排', fill: { who: '我想考初级会计', what: '帮我列一个 3 个月的学习计划', req: '我是零基础，每天能学 2 小时', out: '按周排' } },
+      { label: '讲简单', desc: '书上写得太专业', fill: { who: '我在自学 Excel', what: '帮我把 VLOOKUP 函数用大白话讲清楚', req: '举一个实际的例子', out: '讲解 + 例子' } }
+    ]
+  },
+  family: {
+    icon: '👨‍👩‍👧', title: '家里管事的',
+    prompts: [
+      { label: '办事清单', desc: '怕忘带东西', fill: { who: '我是家里管事的，平时带娃比较多', what: '明天带孩子去县城办身份证，帮我想清单', req: '尽量详细，别让我忘带东西', out: '按重要程度排' } },
+      { label: '出行计划', desc: '想带家人出去玩', fill: { who: '一家三口，孩子 8 岁', what: '周末想去附近城市玩一天，帮我做个简单计划', req: '预算 500 以内，孩子要喜欢', out: '时间 + 地点 + 预算' } },
+      { label: '年货清单', desc: '过年要买一堆东西', fill: { who: '过年要准备年货', what: '帮我列一份年货采购清单', req: '分吃的、用的、送人的', out: '分类清单' } },
+      { label: '一周菜谱', desc: '每天不知做什么菜', fill: { who: '一家四口，有老人有小孩', what: '帮我列一周晚餐菜谱', req: '简单好做，营养均衡', out: '按天列出' } }
+    ]
+  },
+  creator: {
+    icon: '✍️', title: '做内容的人',
+    prompts: [
+      { label: '口播开头', desc: '对着镜头不知说什么', fill: { who: '我在农村老家，平时拍点日常短视频', what: '想拍 30 秒介绍腊肉的视频，帮我写开头', req: '自然一点，别太像背台词', out: '3 个版本让我挑' } },
+      { label: '选题灵感', desc: '不知道拍什么', fill: { who: '我想做县城美食探店账号', what: '帮我出 5 个选题灵感', req: '要接地气，小县城能拍到的', out: '5 个选题 + 一句简介' } },
+      { label: '视频标题', desc: '拍完了不知道起什么标题', fill: { who: '我拍了一条做红薯粉的视频', what: '帮我起 5 个抖音标题', req: '吸引人但不要标题党', out: '5 个标题' } },
+      { label: '改文案口语', desc: '写的太书面了', fill: { who: '我写了一段产品介绍但太正式', what: '帮我把这段话改得更口语、更像聊天', req: '意思不变，像说话那样', out: '改好的版本' } }
+    ]
+  },
+  craftsman: {
+    icon: '🪚', title: '手艺人',
+    prompts: [
+      { label: '手艺介绍', desc: '有人想了解你的手艺', fill: { who: '我是做传统木工的', what: '帮我写一段介绍我手艺的话', req: '真实，不要吹牛', out: '100 字左右' } },
+      { label: '晒作品', desc: '做好了作品想发朋友圈', fill: { who: '我是做手工皮具的', what: '帮我写几条晒作品的朋友圈文案', req: '体现出用心做的感觉', out: '3 条让我挑' } },
+      { label: '客户问价', desc: '报完价客户说贵', fill: { who: '我是做家电维修的', what: '客户说我报价贵，帮我写一段不卑不亢的回复', req: '解释清楚贵在哪', out: '一段话' } },
+      { label: '起名字', desc: '想给工作室起个名字', fill: { who: '我想给我的木工工作室起个名字', what: '帮我起 5 个有记忆点的名字', req: '接地气，好记', out: '5 个名字 + 说明' } }
+    ]
+  },
+  returnee: {
+    icon: '🏠', title: '返乡创业',
+    prompts: [
+      { label: '项目介绍', desc: '想跟别人介绍自己的项目', fill: { who: '我回乡做电商卖本地特产', what: '帮我写一段项目介绍', req: '说清楚为什么回来、做什么、优势', out: '200 字左右' } },
+      { label: '创业提纲', desc: '有想法但不知道怎么整理', fill: { who: '我想在老家开一家民宿', what: '帮我做一个创业计划的提纲', req: '简单实用', out: '分几个大点' } },
+      { label: '招工信息', desc: '回乡创业需要招人', fill: { who: '我在老家开了一个农产品加工厂', what: '帮我写一条招工信息', req: '说清楚做什么、给多少钱', out: '一段话' } },
+      { label: '行业趋势', desc: '想了解行业现在怎么样', fill: { who: '我想回乡做乡村旅游', what: '帮我分析乡村旅游的趋势', req: '用大白话', out: '分机会和挑战' } }
+    ]
+  },
+  explorer: {
+    icon: '🧭', title: '还在摸索',
+    prompts: [
+      { label: '问AI能做什么', desc: '不知道 AI 能干啥', fill: { who: '我刚接触 AI', what: '你能帮我做哪些事？列几个普通人能用上的', req: '用大白话说', out: '列 5-8 个就行' } },
+      { label: '适合学什么', desc: '想进步但不知从哪开始', fill: { who: '我在县城上班，想利用业余时间学点东西', what: '帮我分析一下我适合学什么', req: '先问我几个问题', out: '先问问题' } },
+      { label: '解释AI', desc: '概念都模糊', fill: { who: '我不太懂技术', what: '用大白话告诉我 AI 到底是什么', req: '举一个生活里的例子', out: '一段话讲明白' } },
+      { label: '试一个小忙', desc: '先随便试试', fill: { who: '我是第一次用 AI', what: '随便帮我做一件事', req: '你挑一个简单的', out: '你看着办' } }
+    ]
+  },
+  worker: {
+    icon: '💼', title: '普通上班',
+    prompts: [
+      { label: '写邮件', desc: '不知怎么开口', fill: { who: '我在县城一家公司上班', what: '帮我写一封跟领导请假的邮件', req: '语气正式但不要太死板', out: '一封邮件' } },
+      { label: '整理笔记', desc: '记了一堆但很乱', fill: { who: '我是普通上班族', what: '帮我把今天的工作笔记整理成重点', req: '分条列出，突出待办', out: '5 条重点' } },
+      { label: '准备面试', desc: '要去面试不知会问啥', fill: { who: '我准备去面试一个文职岗位', what: '帮我列 10 个常见面试问题和建议回答', req: '回答要自然，别像背书', out: '10 个问题 + 简要回答' } },
+      { label: '处理Excel', desc: '不会用公式', fill: { who: '我不太会 Excel', what: '帮我把这组数据按月份汇总，告诉我用什么公式', req: '一步步告诉我怎么操作', out: '操作步骤 + 公式' } }
+    ]
+  },
+  patient: {
+    icon: '🏥', title: '看病就医',
+    prompts: [
+      { label: '挂号科室', desc: '不知道该挂哪个科', fill: { who: '我最近头疼睡不着', what: '帮我看看到底该挂什么科', req: '说清楚原因，别乱建议', out: '推荐科室 + 原因' } },
+      { label: '看懂报告', desc: '报告上写得太专业看不懂', fill: { who: '我刚拿到体检报告', what: '帮我把这份报告用大白话解释一下', req: '重点说哪些要注意，哪些没问题', out: '逐项解释' } },
+      { label: '就医流程', desc: '第一次去大医院不知道流程', fill: { who: '我第一次去县医院看病', what: '告诉我从挂号到拿药的完整流程', req: '简单清楚，像跟老人说话', out: '分步骤列出' } },
+      { label: '整理病历', desc: '看病记录太乱', fill: { who: '我要整理家人的看病记录', what: '帮我设计一个病历和用药记录的表格模板', req: '简单实用，能打印出来手写', out: '一个表格模板' } }
+    ]
+  },
+  parent: {
+    icon: '🏫', title: '孩子家长',
+    prompts: [
+      { label: '辅导作业', desc: '不会教孩子做题', fill: { who: '我孩子上小学三年级', what: '帮我用孩子能懂的话解释这道数学题', req: '一步一步讲，像讲故事一样', out: '讲解过程' } },
+      { label: '开家长会', desc: '要在家长会上发言', fill: { who: '我是家委会成员', what: '帮我在家长会上发言，分享一些教育心得', req: '真诚一点，别太官方', out: '一篇发言稿' } },
+      { label: '选兴趣班', desc: '不知道给孩子报什么', fill: { who: '我孩子 6 岁，想报个兴趣班', what: '帮我分析常见的兴趣班各有什么优缺点', req: '客观分析，帮我做选择', out: '分条对比' } },
+      { label: '跟老师沟通', desc: '想跟老师反映问题但不知怎么说', fill: { who: '孩子最近成绩下降了', what: '帮我写一段跟老师微信沟通的话', req: '客气但能把问题说清楚', out: '一段话' } }
+    ]
+  },
+  service: {
+    icon: '✂️', title: '开店做服务',
+    prompts: [
+      { label: '写店铺介绍', desc: '开了店但没有介绍文案', fill: { who: '我在县城开了一家理发店', what: '帮我写一段店铺介绍', req: '朴实，让人看到就想来', out: '100 字左右' } },
+      { label: '做会员方案', desc: '想做会员但不知怎么设计', fill: { who: '我开了一家汽车维修店', what: '帮我设计一个简单的会员优惠方案', req: '实用，让顾客觉得划算', out: '3 个方案让我挑' } },
+      { label: '写营业通知', desc: '要临时调整营业', fill: { who: '我的餐饮店明天要停业装修', what: '帮我写一条通知发朋友圈', req: '说明原因，表示歉意', out: '一段话' } },
+      { label: '客户回访话术', desc: '想维护老客户但不知说什么', fill: { who: '我做家政服务的', what: '帮我写几条回访老客户的话术', req: '自然，不要太商业化', out: '3 条' } }
+    ]
+  },
+  shopper: {
+    icon: '🛒', title: '网购维权',
+    prompts: [
+      { label: '退货话术', desc: '东西有问题要退货', fill: { who: '我在网上买的东西有质量问题', what: '帮我写一段跟客服沟通退货的话', req: '有理有据，争取退货运费', out: '一段话' } },
+      { label: '比价省钱', desc: '想买个大件不知道哪个平台便宜', fill: { who: '我想买一台冰箱', what: '帮我对比一下几个主流平台的同款冰箱价格', req: '列出价格和优惠', out: '表格对比' } },
+      { label: '投诉举报', desc: '遇到了消费欺诈', fill: { who: '我在实体店买到了假货', what: '帮我写一份投诉信', req: '正式、有依据', out: '投诉信模板' } },
+      { label: '防坑攻略', desc: '怕被忽悠', fill: { who: '我要装修新房', what: '帮我列一份装修防坑清单', req: '列出常见的坑和怎么避开', out: '分类清单' } }
+    ]
+  },
+  jobseeker: {
+    icon: '📋', title: '打算找工作',
+    prompts: [
+      { label: '写简历', desc: '不知道怎么写自己的经历', fill: { who: '我在县城做了 5 年销售', what: '帮我写一份简历', req: '突出我的优势和成绩', out: '一份完整简历' } },
+      { label: '准备面试', desc: '怕面试官问的问题答不上来', fill: { who: '我明天要去面试', what: '帮我准备 10 个常见面试问题和回答', req: '回答要自然不背书', out: '10 个问题+建议回答' } },
+      { label: '了解行业', desc: '不知道一个行业前景怎么样', fill: { who: '我想了解一下本地电商行业', what: '帮我分析一下这个行业的前景', req: '用大白话', out: '分优势和风险' } },
+      { label: '谈薪资', desc: '不知道怎么开口谈工资', fill: { who: '面试通过了，要谈薪资', what: '帮我准备一段谈薪资的话术', req: '不卑不亢，有理有据', out: '一段话术' } }
+    ]
+  }
+};
 
-  var currentKey = null;
+/* ===== 快速模板数据 ===== */
+var templates = [
+  {
+    emoji: '📝', title: '会议纪要', desc: '零散记录整理成结论+待办',
+    who: '开会很多的人', what: '帮我整理一份会议纪要',
+    req: '分成结论、待办、负责人、截止时间', out: '用表格形式输出'
+  },
+  {
+    emoji: '✅', title: '任务清单', desc: '一天事多排优先级',
+    who: '每天事情很多的人', what: '帮我排一下今天的任务优先级',
+    req: '按重要和紧急程度排序', out: '列出清单，标上建议时间'
+  },
+  {
+    emoji: '📊', title: '工作汇报', desc: '做了事不知怎么写',
+    who: '需要写工作汇报的上班族', what: '帮我整理一份周报',
+    req: '语气正式但简洁', out: '分本周完成、下周计划'
+  },
+  {
+    emoji: '📢', title: '宣传文案', desc: '小店上新写朋友圈',
+    who: '开小店的人', what: '帮我写几条朋友圈宣传文案',
+    req: '语气自然，不要太像广告', out: '给我 3 条让我挑'
+  },
+  {
+    emoji: '📋', title: '表格清单', desc: '采购、报销、活动准备',
+    who: '需要整理流程的人', what: '帮我列一份清单',
+    req: '分成类别，尽量全面', out: '用表格或分类列表'
+  },
+  {
+    emoji: '🎬', title: '短视频脚本', desc: '想拍视频不知怎么说',
+    who: '想拍短视频的人', what: '帮我写一个短视频脚本',
+    req: '自然一点，像跟观众聊天', out: '开头+中间+结尾'
+  }
+];
 
-  // ===== 选身份 =====
-  window.pickIdentity = function(el) {
-    document.querySelectorAll('.identity-card').forEach(function(c) { c.classList.remove('selected'); });
-    el.classList.add('selected');
-    var key = el.getAttribute('data-key');
-    currentKey = key;
-    var d = data[key]; if (!d) return;
+/* ===== AI 工具场景数据 ===== */
+var toolScenes = [
+  {
+    label: '通用聊天 / 写文案 / 改通知',
+    tools: [
+      { name: '豆包', recommended: false },
+      { name: 'Kimi', recommended: false },
+      { name: '腾讯元宝', recommended: false },
+      { name: '通义千问', recommended: false },
+      { name: '文心一言', recommended: false },
+      { name: '讯飞星火', recommended: false },
+      { name: 'ChatGPT', recommended: false }
+    ],
+    desc: '写通知、改文案、整理记录、翻译'
+  },
+  {
+    label: '搜索资料 / 查信息 / 辅助学习',
+    tools: [
+      { name: 'Kimi', recommended: false },
+      { name: '秘塔 AI 搜索', recommended: false },
+      { name: '通义千问', recommended: false },
+      { name: '豆包', recommended: false },
+      { name: 'Perplexity', recommended: false },
+      { name: '夸克 AI', recommended: false }
+    ],
+    desc: '查资料、学知识、对比信息'
+  },
+  {
+    label: '智能体 / 自动流程 / 小助手',
+    tools: [
+      { name: '扣子', recommended: false },
+      { name: 'Dify', recommended: false },
+      { name: 'FastGPT', recommended: false },
+      { name: 'Coze', recommended: false },
+      { name: '通义智能体', recommended: false }
+    ],
+    desc: '不懂代码也能搭 AI 助手'
+  },
+  {
+    label: '图片 / 海报 / 视觉素材',
+    tools: [
+      { name: '即梦', recommended: false },
+      { name: '通义万相', recommended: false },
+      { name: '文心一格', recommended: false },
+      { name: 'Canva', recommended: false },
+      { name: '稿定设计', recommended: false }
+    ],
+    desc: '做海报、配图、产品图'
+  },
+  {
+    label: '视频 / 口播 / 内容创作',
+    tools: [
+      { name: '剪映', recommended: false },
+      { name: '即梦', recommended: false },
+      { name: '可灵', recommended: false },
+      { name: '通义万相', recommended: false },
+      { name: 'Runway', recommended: false }
+    ],
+    desc: '做短视频、口播脚本、视频素材'
+  },
+  {
+    label: '网页 Demo / 互动小工具 / 编程辅助',
+    tools: [
+      { name: 'TRAE Work', recommended: true },
+      { name: 'TRAE IDE', recommended: false },
+      { name: 'Cursor', recommended: false },
+      { name: 'GitHub Copilot', recommended: false },
+      { name: 'CodeBuddy', recommended: false }
+    ],
+    desc: '用自然语言做网页、小工具、写代码'
+  }
+];
 
-    document.getElementById('tIcon').textContent = d.icon;
-    document.getElementById('tTitle').textContent = d.title + ' · 你可以试试这些';
+/* ===== VR 服务站场景数据 ===== */
+var stationData = [
+  {
+    key: 'hospital', emoji: '🏥', name: '医院就诊导航', audience: '中老年人',
+    desc: '挂号→找科室→取药',
+    steps: [
+      { emoji: '📋', name: '智能挂号', desc: 'AI 问诊后推荐科室' },
+      { emoji: '🧭', name: '院内导航', desc: '实景引导到对应诊室' },
+      { emoji: '💊', name: '取药提醒', desc: '提醒取药和注意事项' }
+    ]
+  },
+  {
+    key: 'shop', emoji: '🏪', name: '小店经营助手', audience: '小店老板',
+    desc: '查货架→看人流→写通知',
+    steps: [
+      { emoji: '📦', name: '货架管理', desc: 'AI 扫描识别库存和保质期' },
+      { emoji: '👥', name: '客流分析', desc: '实时显示人流热力图' },
+      { emoji: '📢', name: '通知生成', desc: '一键生成促销通知' }
+    ]
+  },
+  {
+    key: 'gov', emoji: '📋', name: '基层办事导航', audience: '基层办公',
+    desc: '识别材料→打印告知→提醒下一步',
+    steps: [
+      { emoji: '🔍', name: '材料识别', desc: 'AI 自动扫描识别材料' },
+      { emoji: '🖨️', name: '打印告知', desc: '自动生成办理告知单' },
+      { emoji: '🔔', name: '进度提醒', desc: '提醒群众下一步流程' }
+    ]
+  },
+  {
+    key: 'livestream', emoji: '🌾', name: '农产品直播卖货', audience: '农产品经营',
+    desc: '弹幕关键词→产品卡→互动提醒',
+    steps: [
+      { emoji: '💬', name: '弹幕分析', desc: 'AI 实时提取买家问题' },
+      { emoji: '🏷️', name: '产品卡片', desc: '自动弹出当前产品详情' },
+      { emoji: '🙋', name: '互动提醒', desc: '提示何时回复评论和引导' }
+    ]
+  },
+  {
+    key: 'study', emoji: '👨‍👩‍👧', name: '家里学习角', audience: '带娃家长',
+    desc: '虚拟书架→3D演示→轻松模式',
+    steps: [
+      { emoji: '📚', name: '虚拟书架', desc: '3D 书架按年龄推荐内容' },
+      { emoji: '🔬', name: '3D 演示', desc: '用 3D 模型讲解知识点' },
+      { emoji: '🎮', name: '轻松练习', desc: '游戏化巩固学习内容' }
+    ]
+  },
+  {
+    key: 'craft', emoji: '🪚', name: '手艺展示厅', audience: '手艺人',
+    desc: '3D建模→AI导览→方言翻译',
+    steps: [
+      { emoji: '🎨', name: '3D 展品', desc: '手艺作品 3D 建模展示' },
+      { emoji: '🗣️', name: 'AI 导览', desc: 'AI 讲解每件作品的故事' },
+      { emoji: '🌐', name: '方言翻译', desc: '自动翻译成普通话' }
+    ]
+  },
+  {
+    key: 'startup', emoji: '🏠', name: '返乡创业地图', audience: '返乡创业',
+    desc: '俯瞰标注→竞品分析→备选比较',
+    steps: [
+      { emoji: '🗺️', name: '俯瞰地图', desc: '3D 地图标注本地资源' },
+      { emoji: '📊', name: '竞品分析', desc: '自动分析周边同类店铺' },
+      { emoji: '⚖️', name: '方案比较', desc: '3D 对比不同选址方案' }
+    ]
+  },
+  {
+    key: 'explore', emoji: '🧭', name: '小镇探索指南', audience: '所有人',
+    desc: '找吃的→规划路线→隐藏好店',
+    steps: [
+      { emoji: '🍜', name: '美食雷达', desc: '扫描附近评分好店' },
+      { emoji: '🛤️', name: '路线规划', desc: 'AI 规划步行最优路线' },
+      { emoji: '⭐', name: '隐藏好店', desc: '发现本地人推荐的宝藏店铺' }
+    ]
+  }
+];
 
-    // 渲染多个提示词卡片
-    var container = document.getElementById('tPrompts');
-    container.innerHTML = '';
-    d.prompts.forEach(function(p, i) {
-      var card = document.createElement('div');
-      card.className = 'task-prompt-card';
-      card.innerHTML =
-        '<h4>' + p.label + '</h4>' +
-        '<p>' + p.desc + '</p>' +
-        '<button class="btn btn-primary btn-sm" onclick="toGenerator(' + i + ')">带到生成器 →</button>';
-      container.appendChild(card);
-    });
+/* ===== 7 天计划数据 ===== */
+var planKey = 'xcai_plan_v5';
+var cycles = [
+  {
+    label: '第 1 轮 · 入门期',
+    days: [
+      { title: '问 AI 一个不懂的词', desc: '比如"内卷"是什么意思' },
+      { title: '让 AI 改一段话', desc: '发一条你自己写的消息，让它改通顺' },
+      { title: '让 AI 列一份清单', desc: '比如出门要带什么、买菜买什么' },
+      { title: '追问"说得再简单点"', desc: '对 AI 的回答不满意，直接让它再解释' },
+      { title: '比较两个方案', desc: '让 AI 分析利弊，帮你做选择' },
+      { title: '完成一个真实小任务', desc: '今天真正要做的通知/文案，让 AI 打草稿' },
+      { title: '保存一个好用模板', desc: '把最顺手的提示词存到备忘录' }
+    ],
+    doneTitle: '🎉 入门期完成！', doneDesc: '你已经知道怎么跟 AI 说上话了。'
+  },
+  {
+    label: '第 2 轮 · 执行期',
+    days: [
+      { title: '整理一次真实会议记录', desc: '把零散笔记丢给 AI 整理' },
+      { title: '做一份明日任务清单', desc: '让 AI 按优先级排好' },
+      { title: '写一份工作日报或周报', desc: '把本周的事告诉 AI，让它总结' },
+      { title: '把一段通知改得更清楚', desc: '找一条旧通知，让 AI 润色' },
+      { title: '让 AI 比较两个方案', desc: '让 AI 分析利弊，帮你做选择' },
+      { title: '做一份活动准备清单', desc: '把活动安排告诉 AI，让它帮你想周全' },
+      { title: '保存 3 个常用模板', desc: '把这轮最顺的提示词存下来' }
+    ],
+    doneTitle: '🎉 执行期完成！', doneDesc: '你已经能用 AI 高效完成日常工作了。'
+  },
+  {
+    label: '第 3 轮 · 进阶期',
+    days: [
+      { title: '用 AI 模拟一次客户问答', desc: '让 AI 扮演客户，你练习怎么介绍产品' },
+      { title: '让 AI 梳理一个工作流程', desc: '把你做事的过程告诉 AI，让它优化' },
+      { title: '用 AI 做一次简单数据分析', desc: '把一堆数字给 AI，让它看出规律' },
+      { title: '让 AI 优化一个工作方案', desc: '把你写的方案给 AI，让它提改进建议' },
+      { title: '用 AI 写一份活动策划提纲', desc: '告诉 AI 活动目标，让它搭框架' },
+      { title: '让 AI 帮你做决策分析', desc: '把纠结的选择告诉 AI，让它列利弊' },
+      { title: '整理一份 AI 使用技巧', desc: '记下你觉得最实用的技巧' }
+    ],
+    doneTitle: '🎉 进阶期完成！', doneDesc: '你已经不只是"会用 AI"，而是"会用好 AI"。'
+  },
+  {
+    label: '第 4 轮 · 创造期',
+    days: [
+      { title: '用 AI 策划一个完整活动方案', desc: '从目标到执行，让 AI 搭完整个方案' },
+      { title: '让 AI 生成一份调研问卷', desc: '告诉 AI 你想了解什么，让它出题' },
+      { title: '用 AI 做一场角色扮演练习', desc: '让 AI 扮演面试官、客户或领导' },
+      { title: '让 AI 头脑风暴 10 个点子', desc: '告诉 AI 一个主题，让它出创意' },
+      { title: '用 AI 写一份完整方案初稿', desc: '把想法告诉 AI，让它写成正式方案' },
+      { title: '让 AI 帮你优化自我介绍', desc: '把你的自我介绍写出来，让 AI 帮改' },
+      { title: '总结你的 AI 最佳实践', desc: '4 轮下来，你最满意的用法是什么？' }
+    ],
+    doneTitle: '🎉 全部通关！', doneDesc: '4 轮、28 天，你已经从"AI 小白"变成了"AI 熟手"。'
+  }
+];
 
-    var panel = document.getElementById('taskPanel');
-    panel.classList.add('visible');
-    setTimeout(function() {
-      panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 80);
-  };
+/* ===== Toast ===== */
+var toastTimer = null;
+function toast(msg) {
+  var el = document.getElementById('toast');
+  el.textContent = msg; el.classList.add('show');
+  if (toastTimer) clearTimeout(toastTimer);
+  toastTimer = setTimeout(function() { el.classList.remove('show'); }, 2000);
+}
+window.toast = toast;
 
-  // ===== 带到生成器 =====
-  window.toGenerator = function(promptIndex) {
-    if (!currentKey || !data[currentKey]) { toast('先选一个身份'); return; }
-    var prompts = data[currentKey].prompts;
-    if (promptIndex === undefined) promptIndex = 0;
-    var f = prompts[promptIndex].fill;
-    document.getElementById('gWho').value = f.who;
-    document.getElementById('gWhat').value = f.what;
-    document.getElementById('gReq').value = f.req;
-    document.getElementById('gOut').value = f.out;
-
-    var gen = document.getElementById('generator');
-    setTimeout(function() {
-      gen.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setTimeout(makePrompt, 500);
-    }, 200);
-  };
-
-  // ===== 生成提示词 =====
-  window.makePrompt = function() {
-    var who = document.getElementById('gWho').value.trim();
-    var what = document.getElementById('gWhat').value.trim();
-    if (!who || !what) { toast('先填"你是谁"和"想做什么"'); return; }
-
-    var req = document.getElementById('gReq').value.trim();
-    var out = document.getElementById('gOut').value.trim();
-
-    var prompt = '你好，我想请你帮个忙：\n\n';
-    prompt += '【我是谁】' + who + '\n';
-    prompt += '【我想做的事】' + what + '\n';
-    if (req) prompt += '【我的要求】' + req + '\n';
-    if (out) prompt += '【希望怎么给我】' + out + '\n';
-    prompt += '\n请用普通人能看懂的话回答。如果信息不够，先问我，不要自己编。涉及价格、政策、医疗、法律、财务等重要内容，请提醒我自己核实。';
-
-    document.getElementById('rText').textContent = prompt;
-    var res = document.getElementById('gResult');
-    res.classList.add('visible');
-    setTimeout(function() { res.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 100);
-  };
-
-  // ===== 复制 =====
-  window.copyResult = function() {
-    var text = document.getElementById('rText').textContent;
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(function() { toast('已复制，去粘贴给 AI 吧！'); });
+/* ===== 渲染身份卡片网格 ===== */
+var identityGrid = document.getElementById('identityGrid');
+var currentIdentityKey = null;
+Object.keys(data).forEach(function(key) {
+  var d = data[key];
+  var card = document.createElement('div');
+  card.className = 'id-card';
+  card.setAttribute('data-key', key);
+  card.innerHTML =
+    '<span class="id-card-emoji">' + d.icon + '</span>' +
+    '<span class="id-card-name">' + d.title + '</span>' +
+    '<span class="id-card-desc">' + d.prompts.map(function(p) { return p.label; }).join('、') + '</span>';
+  card.onclick = function() {
+    var prev = document.querySelector('.id-card.selected');
+    if (prev && prev !== card) prev.classList.remove('selected');
+    if (card.classList.contains('selected')) {
+      card.classList.remove('selected');
+      closeTaskPanel();
+      currentIdentityKey = null;
     } else {
-      var ta = document.createElement('textarea');
-      ta.value = text; ta.style.position = 'fixed'; ta.style.left = '-9999px';
-      document.body.appendChild(ta); ta.select();
-      try { document.execCommand('copy'); toast('已复制'); }
-      catch (e) { toast('复制失败，请手动选择'); }
-      document.body.removeChild(ta);
+      card.classList.add('selected');
+      openTaskPanel(key);
+      currentIdentityKey = key;
     }
   };
+  identityGrid.appendChild(card);
+});
 
-  // ===== 交付物卡片 =====
-  window.fillDeliver = function(who, what, req, out) {
-    document.getElementById('gWho').value = who;
-    document.getElementById('gWhat').value = what;
-    document.getElementById('gReq').value = req;
-    document.getElementById('gOut').value = out;
-    var gen = document.getElementById('generator');
-    setTimeout(function() {
-      gen.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setTimeout(makePrompt, 500);
-    }, 200);
-  };
-  window.copyDeliver = function(btn) {
-    var card = btn.closest('.deliver-card');
-    var promptEl = card.querySelector('.deliver-prompt');
-    var text = promptEl.textContent.replace(/"/g, '');
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(function() { toast('已复制提问'); });
-    } else {
-      var ta = document.createElement('textarea');
-      ta.value = text; ta.style.position = 'fixed'; ta.style.left = '-9999px';
-      document.body.appendChild(ta); ta.select();
-      try { document.execCommand('copy'); toast('已复制提问'); }
-      catch (e) { toast('复制失败'); }
-      document.body.removeChild(ta);
-    }
-  };
+/* ===== 任务面板逻辑 ===== */
+var taskPanel = document.getElementById('taskPanel');
+var taskPanelHeader = document.getElementById('taskPanelHeader');
+var taskPromptGrid = document.getElementById('taskPromptGrid');
 
-  // ===== 场景选择器 =====
-  window.pickScene = function(el) {
-    document.querySelectorAll('.scene-tab').forEach(function(t) { t.classList.remove('active'); });
-    document.querySelectorAll('.scene-panel').forEach(function(p) { p.classList.remove('active'); });
-    el.classList.add('active');
-    var scene = el.getAttribute('data-scene');
-    document.getElementById('scene-' + scene).classList.add('active');
-  };
-
-  // ===== 7 天计划 · 多轮递进 =====
-  var planKey = 'xcai_plan_v3';
-  var cycles = [
-    {
-      label: '第 1 轮 · 入门期',
-      desc: '不用每天研究新工具，只要每天完成一个小动作，慢慢就会习惯用 AI 了。',
-      days: [
-        { title: '问 AI 一个不懂的词', desc: '比如"内卷""社保基数"是什么意思', time: '3 分钟' },
-        { title: '让 AI 改一段话', desc: '发一条你自己写的消息，让它改通顺', time: '5 分钟' },
-        { title: '让 AI 列一份清单', desc: '比如出门要带什么、买菜买什么', time: '5 分钟' },
-        { title: '追问一句"说得再简单点"', desc: '对 AI 的回答不满意，直接让它再解释', time: '3 分钟' },
-        { title: '比较两个方案', desc: '比如"自己做还是请人做"，让 AI 分析利弊', time: '5 分钟' },
-        { title: '完成一个真实小任务', desc: '今天真正要做的通知/文案/回复，让 AI 打草稿', time: '10 分钟' },
-        { title: '保存一个好用模板', desc: '把最顺手的提示词存到备忘录，下次直接用', time: '5 分钟' }
-      ],
-      doneTitle: '🎉 入门期完成！',
-      doneDesc: '你已经知道怎么跟 AI 说上话了。接下来试试用 AI 帮自己"做点东西"。'
-    },
-    {
-      label: '第 2 轮 · 执行期',
-      desc: '开始让 AI 帮你做"能直接用的东西"——会议纪要、清单、汇报、文案。',
-      days: [
-        { title: '整理一次真实会议记录', desc: '把刚开完会的零散笔记丢给 AI 整理', time: '10 分钟' },
-        { title: '做一份明日任务清单', desc: '让 AI 把明天要做的事按优先级排好', time: '5 分钟' },
-        { title: '写一份工作日报或周报', desc: '把本周做的事告诉 AI，让它帮你总结', time: '10 分钟' },
-        { title: '把一段通知改得更清楚', desc: '找一条旧通知，让 AI 润色得更通顺', time: '5 分钟' },
-        { title: '让 AI 帮你比较两个方案', desc: '比如"这个产品该不该做活动"，让 AI 分析利弊', time: '8 分钟' },
-        { title: '做一份活动准备清单', desc: '把活动安排告诉 AI，让它帮你想周全', time: '8 分钟' },
-        { title: '保存 3 个最常用的提示词模板', desc: '把这轮用得最顺的提示词存下来', time: '5 分钟' }
-      ],
-      doneTitle: '🎉 执行期完成！',
-      doneDesc: '你已经能用 AI 高效完成日常工作了。接下来试试更深度的场景。'
-    },
-    {
-      label: '第 3 轮 · 进阶期',
-      desc: '让 AI 成为你的"工作搭档"——模拟演练、优化方案、决策分析。',
-      days: [
-        { title: '用 AI 模拟一次客户问答', desc: '让 AI 扮演客户，你练习怎么介绍产品', time: '10 分钟' },
-        { title: '让 AI 梳理一个工作流程', desc: '把你做事的过程告诉 AI，让它帮你优化', time: '8 分钟' },
-        { title: '用 AI 做一次简单数据分析', desc: '把一堆数字给 AI，让它帮你看出规律', time: '10 分钟' },
-        { title: '让 AI 优化一个工作方案', desc: '把你写的方案给 AI，让它提改进建议', time: '8 分钟' },
-        { title: '用 AI 写一份活动策划提纲', desc: '告诉 AI 活动目标，让它帮你搭建框架', time: '10 分钟' },
-        { title: '让 AI 帮你做决策分析', desc: '把纠结的选择告诉 AI，让它帮你列利弊', time: '8 分钟' },
-        { title: '整理一份 AI 使用技巧清单', desc: '回顾这轮，记下你觉得最实用的技巧', time: '5 分钟' }
-      ],
-      doneTitle: '🎉 进阶期完成！',
-      doneDesc: '你已经不只是"会用 AI"，而是"会用好 AI"了。最后冲刺来看看 AI 的创造力。'
-    },
-    {
-      label: '第 4 轮 · 创造期',
-      desc: '把 AI 当"创意伙伴"——策划方案、调研问卷、角色扮演、头脑风暴。',
-      days: [
-        { title: '用 AI 策划一个完整活动方案', desc: '从目标到执行，让 AI 帮你搭完整个方案', time: '15 分钟' },
-        { title: '让 AI 生成一份调研问卷', desc: '告诉 AI 你想了解什么，让它帮你出题', time: '10 分钟' },
-        { title: '用 AI 做一场角色扮演练习', desc: '让 AI 扮演面试官、客户或领导，你练习应对', time: '10 分钟' },
-        { title: '让 AI 头脑风暴 10 个点子', desc: '告诉 AI 一个主题，让它帮你出创意', time: '8 分钟' },
-        { title: '用 AI 写一份完整方案初稿', desc: '把想法告诉 AI，让它帮你写成正式方案', time: '15 分钟' },
-        { title: '让 AI 帮你优化自我介绍', desc: '把你的自我介绍写出来，让 AI 帮改得更好', time: '10 分钟' },
-        { title: '总结你的 AI 最佳实践清单', desc: '4 轮下来，你最满意的用法是什么？记录下', time: '8 分钟' }
-      ],
-      doneTitle: '🎉 全部通关！',
-      doneDesc: '4 轮、28 天，你已经从"AI 小白"变成了"AI 熟手"。以后不管遇到什么问题，都可以试试问 AI。'
-    }
-  ];
-
-  var plan = (function() {
-    try { var s = localStorage.getItem(planKey); return s ? JSON.parse(s) : { cycle: 0, done: [] }; }
-    catch(e) { return { cycle: 0, done: [] }; }
-  })();
-
-  function savePlan() { try { localStorage.setItem(planKey, JSON.stringify(plan)); } catch(e) {} }
-
-  function renderCycle() {
-    var c = cycles[plan.cycle];
-    if (!c) { plan.cycle = 0; plan.done = []; savePlan(); c = cycles[0]; }
-
-    document.getElementById('pCycle').textContent = c.label;
-    document.querySelector('#plan .section-desc').textContent = c.desc;
-
-    var list = document.getElementById('pList');
-    list.innerHTML = '';
-    c.days.forEach(function(d, i) {
-      var dayNum = i + 1;
-      var div = document.createElement('div');
-      div.className = 'plan-day';
-      if (plan.done.indexOf(dayNum) !== -1) div.classList.add('done');
-      div.setAttribute('data-d', dayNum);
-      div.onclick = function() { toggleDay(dayNum); };
-      div.innerHTML =
-        '<div class="plan-check">' + (plan.done.indexOf(dayNum) !== -1 ? '✓' : '') + '</div>' +
-        '<div class="plan-day-content"><h4>' + d.title + '</h4><p>' + d.desc + '</p></div>' +
-        '<div class="plan-tag">' + d.time + '</div>';
-      list.appendChild(div);
-    });
-
-    updateProgress();
-  }
-
-  function updateProgress() {
-    var c = cycles[plan.cycle];
-    var count = plan.done.length;
-    document.getElementById('pFill').style.width = (count / 7 * 100) + '%';
-    document.getElementById('pText').textContent = count + ' / 7';
-
-    var msg = document.getElementById('pDone');
-    var btn = document.getElementById('pNextBtn');
-    var hint = document.getElementById('planHint');
-    if (count >= 7) {
-      msg.classList.add('visible');
-      if (hint) hint.style.display = 'none';
-      document.getElementById('pDoneTitle').textContent = c.doneTitle;
-      document.getElementById('pDoneDesc').textContent = c.doneDesc;
-      if (plan.cycle < 3) {
-        btn.style.display = 'inline-flex';
-        btn.textContent = '进入第 ' + (plan.cycle + 2) + ' 轮 →';
-        btn.onclick = function() { plan.cycle++; plan.done = []; savePlan(); renderCycle(); document.getElementById('pDone').classList.remove('visible'); toast('开始第 ' + (plan.cycle + 1) + ' 轮！'); };
-      } else {
-        btn.style.display = 'none';
-      }
-    } else {
-      msg.classList.remove('visible');
-      if (hint) hint.style.display = 'block';
-    }
-  }
-
-  function toggleDay(n) {
-    var i = plan.done.indexOf(n);
-    if (i === -1) plan.done.push(n); else plan.done.splice(i, 1);
-    plan.done.sort(); savePlan(); renderCycle();
-  }
-
-  window.checkDay = function(el) {
-    var n = parseInt(el.getAttribute('data-d'));
-    toggleDay(n);
-  };
-
-  window.resetPlan = function() {
-    plan.done = []; savePlan(); renderCycle(); toast('当前轮次已重置');
-  };
-
-  renderCycle();
-
-  // ===== Toast =====
-  var toastTimer = null;
-  function toast(msg) {
-    var el = document.getElementById('toast');
-    el.textContent = msg; el.classList.add('show');
-    if (toastTimer) clearTimeout(toastTimer);
-    toastTimer = setTimeout(function() { el.classList.remove('show'); }, 2000);
-  }
-  window.toast = toast;
-
-  // ===== 导航栏 =====
-  var nav = document.getElementById('nav');
-  var navLinks = document.getElementById('navLinks');
-  document.getElementById('navToggle').addEventListener('click', function() { navLinks.classList.toggle('open'); });
-  navLinks.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', function() { navLinks.classList.remove('open'); }); });
-
-  // 滚动高亮导航
-  var sections = document.querySelectorAll('section[id]');
-  var links = navLinks.querySelectorAll('a');
-  window.addEventListener('scroll', function() {
-    var pos = window.scrollY + 80;
-    sections.forEach(function(sec) {
-      if (pos >= sec.offsetTop && pos < sec.offsetTop + sec.offsetHeight) {
-        var id = sec.getAttribute('id');
-        links.forEach(function(a) { a.classList.toggle('active', a.getAttribute('href') === '#' + id); });
-      }
-    });
+function openTaskPanel(key) {
+  var d = data[key];
+  taskPanelHeader.innerHTML = d.icon + ' ' + d.title;
+  taskPromptGrid.innerHTML = '';
+  d.prompts.forEach(function(p, i) {
+    var pCard = document.createElement('div');
+    pCard.className = 'task-prompt-card';
+    pCard.innerHTML =
+      '<div class="task-prompt-label">' + p.label + '</div>' +
+      '<div class="task-prompt-desc">' + p.desc + '</div>' +
+      '<button class="task-prompt-btn">用这个 →</button>';
+    pCard.querySelector('.task-prompt-btn').onclick = function() {
+      document.getElementById('g1Who').value = p.fill.who;
+      document.getElementById('g1What').value = p.fill.what;
+      document.getElementById('g1Req').value = p.fill.req;
+      document.getElementById('g1Out').value = p.fill.out;
+      setTimeout(function() {
+        document.getElementById('generator1').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setTimeout(makePrompt1, 400);
+      }, 150);
+    };
+    taskPromptGrid.appendChild(pCard);
   });
+  taskPanel.classList.add('open');
+  setTimeout(function() {
+    taskPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, 200);
+}
+
+function closeTaskPanel() {
+  taskPanel.classList.remove('open');
+}
+
+/* ===== 生成器1 ===== */
+window.makePrompt1 = function() {
+  var who = document.getElementById('g1Who').value.trim();
+  var what = document.getElementById('g1What').value.trim();
+  if (!who || !what) { toast('先填"你是谁"和"想做什么"'); return; }
+  var req = document.getElementById('g1Req').value.trim();
+  var out = document.getElementById('g1Out').value.trim();
+  var prompt = '你好，我想请你帮个忙：\n\n';
+  prompt += '【我是谁】' + who + '\n';
+  prompt += '【我想做的事】' + what + '\n';
+  if (req) prompt += '【我的要求】' + req + '\n';
+  if (out) prompt += '【希望怎么给我】' + out + '\n';
+  prompt += '\n请用普通人能看懂的话回答。如果信息不够，先问我，不要自己编。涉及价格、政策、医疗、法律、财务等重要内容，请提醒我自己核实。';
+  document.getElementById('g1ResultText').value = prompt;
+  var res = document.getElementById('g1Result');
+  res.classList.add('visible');
+  setTimeout(function() { res.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 100);
+};
+
+/* ===== 生成器2（一句话） ===== */
+window.makePrompt2 = function() {
+  var input = document.getElementById('g2Input').value.trim();
+  if (!input) { toast('先写一句话描述你想要什么'); return; }
+  var prompt = '你好，我想请你帮我：\n\n' + input + '\n\n请用普通人能看懂的话回答。如果信息不够，先问我，不要自己编。涉及价格、政策、医疗、法律、财务等重要内容，请提醒我自己核实。';
+  document.getElementById('g2ResultText').value = prompt;
+  var res = document.getElementById('g2Result');
+  res.classList.add('visible');
+  setTimeout(function() { res.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 100);
+};
+
+/* ===== 复制功能 ===== */
+window.copyResult = function(textareaId) {
+  var text = document.getElementById(textareaId).value;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(function() { toast('已复制，去粘贴给 AI 吧！'); });
+  } else {
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.left = '-9999px';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); toast('已复制'); }
+    catch (e) { toast('复制失败，请手动选择'); }
+    document.body.removeChild(ta);
+  }
+};
+
+/* ===== 渲染快速模板 ===== */
+var quickGrid = document.getElementById('quickGrid');
+templates.forEach(function(t) {
+  var card = document.createElement('div');
+  card.className = 'quick-card';
+  card.innerHTML = '<h4>' + t.emoji + ' ' + t.title + '</h4><p>' + t.desc + '</p>';
+  card.onclick = function() {
+    var sentence = '我是' + t.who + '，' + t.what + '，' + t.req + '，' + t.out;
+    document.getElementById('g2Input').value = sentence;
+    var box = document.querySelector('.quickgen-box');
+    setTimeout(function() {
+      box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(makePrompt2, 400);
+    }, 100);
+  };
+  quickGrid.appendChild(card);
+});
+
+/* ===== 渲染 AI 工具场景 ===== */
+var scenePills = document.getElementById('scenePills');
+var scenePanels = document.getElementById('scenePanels');
+var currentSceneIdx = 0;
+
+toolScenes.forEach(function(scene, idx) {
+  var pill = document.createElement('div');
+  pill.className = 'scene-pill' + (idx === 0 ? ' active' : '');
+  pill.textContent = scene.label;
+  pill.onclick = function() { pickScene(idx); };
+  scenePills.appendChild(pill);
+
+  var panel = document.createElement('div');
+  panel.className = 'scene-panel' + (idx === 0 ? ' active' : '');
+  panel.setAttribute('data-scene', idx);
+  var html = '<div class="scene-panel-desc">' + scene.desc + '</div><div class="scene-tools">';
+  scene.tools.forEach(function(tool) {
+    html += '<span class="scene-tool-tag' + (tool.recommended ? ' recommended' : '') + '">';
+    html += (tool.recommended ? '⭐ ' : '') + tool.name + '</span>';
+  });
+  html += '</div>';
+  panel.innerHTML = html;
+  scenePanels.appendChild(panel);
+});
+
+window.pickScene = function(idx) {
+  currentSceneIdx = idx;
+  document.querySelectorAll('.scene-pill').forEach(function(p, i) {
+    p.classList.toggle('active', i === idx);
+  });
+  document.querySelectorAll('.scene-panel').forEach(function(p, i) {
+    p.classList.toggle('active', i === idx);
+  });
+};
+
+/* ===== 渲染 VR 服务站 ===== */
+var stationGrid = document.getElementById('stationGrid');
+var stationPreviews = document.getElementById('stationPreviews');
+var openStationKey = null;
+
+stationData.forEach(function(s) {
+  var card = document.createElement('div');
+  card.className = 'station-card';
+  card.setAttribute('data-station', s.key);
+  card.innerHTML =
+    '<span class="station-emoji">' + s.emoji + '</span>' +
+    '<span class="station-name">' + s.name + '</span>' +
+    '<span class="station-audience">' + s.audience + '</span>' +
+    '<span class="station-desc">' + s.desc + '</span>' +
+    '<button class="station-detail-btn">查看场景详情</button>';
+  card.querySelector('.station-detail-btn').onclick = function() {
+    toggleStation(s.key);
+  };
+  stationGrid.appendChild(card);
+
+  var preview = document.createElement('div');
+  preview.className = 'station-preview';
+  preview.id = 'station-preview-' + s.key;
+  var stepsHtml = '<div class="station-steps">';
+  s.steps.forEach(function(step) {
+    stepsHtml +=
+      '<div class="station-step-card">' +
+      '<span class="station-step-emoji">' + step.emoji + '</span>' +
+      '<div class="station-step-name">' + step.name + '</div>' +
+      '<div class="station-step-desc">' + step.desc + '</div>' +
+      '</div>';
+  });
+  stepsHtml += '</div>';
+  preview.innerHTML =
+    '<div class="station-preview-title">🥽 场景预览：' + s.name + '</div>' +
+    stepsHtml +
+    '<div style="text-align:center;">' +
+    '<button class="btn btn-ghost btn-sm" onclick="toggleStation(\'' + s.key + '\')">收起</button>' +
+    '</div>';
+  stationPreviews.appendChild(preview);
+});
+
+window.toggleStation = function(key) {
+  if (openStationKey === key) {
+    document.getElementById('station-preview-' + key).classList.remove('open');
+    openStationKey = null;
+    return;
+  }
+  if (openStationKey) {
+    document.getElementById('station-preview-' + openStationKey).classList.remove('open');
+  }
+  openStationKey = key;
+  var el = document.getElementById('station-preview-' + key);
+  el.classList.add('open');
+  setTimeout(function() {
+    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, 200);
+};
+
+/* ===== 7 天计划 ===== */
+var plan = (function() {
+  try { var s = localStorage.getItem(planKey); return s ? JSON.parse(s) : { cycle: 0, done: [] }; }
+  catch(e) { return { cycle: 0, done: [] }; }
+})();
+function savePlan() { try { localStorage.setItem(planKey, JSON.stringify(plan)); } catch(e) {} }
+
+function renderCycle() {
+  var c = cycles[plan.cycle];
+  if (!c) { plan.cycle = 0; plan.done = []; savePlan(); c = cycles[0]; }
+  document.getElementById('pCycle').textContent = c.label;
+  var list = document.getElementById('pList');
+  list.innerHTML = '';
+  c.days.forEach(function(d, i) {
+    var n = i + 1;
+    var div = document.createElement('div');
+    div.className = 'plan-day';
+    if (plan.done.indexOf(n) !== -1) div.classList.add('done');
+    div.onclick = function() {
+      var idx = plan.done.indexOf(n);
+      if (idx === -1) plan.done.push(n); else plan.done.splice(idx, 1);
+      plan.done.sort(function(a,b){return a-b;}); savePlan(); renderCycle();
+    };
+    div.innerHTML =
+      '<div class="plan-check">' + (plan.done.indexOf(n) !== -1 ? '✓' : '') + '</div>' +
+      '<div class="plan-day-content"><h4>' + d.title + '</h4><p>' + d.desc + '</p></div>';
+    list.appendChild(div);
+  });
+  updateProgress();
+}
+
+function updateProgress() {
+  var c = cycles[plan.cycle];
+  var count = plan.done.length;
+  document.getElementById('pFill').style.width = (count / 7 * 100) + '%';
+  document.getElementById('pText').textContent = count + ' / 7';
+  var msg = document.getElementById('pDone');
+  var btn = document.getElementById('pNextBtn');
+  if (count >= 7) {
+    msg.classList.add('visible');
+    document.getElementById('pDoneTitle').textContent = c.doneTitle;
+    document.getElementById('pDoneDesc').textContent = c.doneDesc;
+    if (plan.cycle < 3) {
+      btn.style.display = 'inline-flex';
+      btn.textContent = '进入下一轮 →';
+      btn.onclick = function() {
+        plan.cycle++; plan.done = []; savePlan(); renderCycle();
+        msg.classList.remove('visible');
+        toast('开始第 ' + (plan.cycle + 1) + ' 轮！');
+      };
+    } else {
+      btn.style.display = 'none';
+    }
+  } else {
+    msg.classList.remove('visible');
+  }
+}
+
+window.resetPlan = function() {
+  plan.done = []; savePlan(); renderCycle(); toast('当前轮次已重置');
+};
+
+renderCycle();
+
+/* ===== 导航栏 ===== */
+var navLinks = document.getElementById('navLinks');
+document.getElementById('navToggle').addEventListener('click', function() {
+  navLinks.classList.toggle('open');
+});
+navLinks.querySelectorAll('a').forEach(function(a) {
+  a.addEventListener('click', function() { navLinks.classList.remove('open'); });
+});
+
+/* ===== 导航高亮 ===== */
+var sections = document.querySelectorAll('section[id]');
+var navLinkEls = navLinks.querySelectorAll('a');
+window.addEventListener('scroll', function() {
+  var pos = window.scrollY + 80;
+  sections.forEach(function(sec) {
+    if (pos >= sec.offsetTop && pos < sec.offsetTop + sec.offsetHeight) {
+      var id = sec.getAttribute('id');
+      navLinkEls.forEach(function(a) {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+});
 
 })();
 </script>
